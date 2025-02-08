@@ -53,4 +53,14 @@ class Service extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Application::class, ['service_id' => 'id']);
     }
+
+
+    public static function getServices()
+    {
+        return self::find()
+            ->select('title')
+            ->indexBy('id')
+            ->column()
+            ;
+    }
 }

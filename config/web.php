@@ -5,9 +5,9 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' => 'ru-RU',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language' => 'ru-RU',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -15,7 +15,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '123',
+            'cookieValidationKey' => 'ewegfqecf5',
             'baseUrl' => '',
         ],
         'cache' => [
@@ -53,7 +53,19 @@ $config = [
         ],
         
     ],
+
     'params' => $params,
+    'modules' => [
+        'account' => [
+            'class' => 'app\modules\account\Module',
+            'defaultRoute' => 'application/index' //controller/action
+        ],
+
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'defaultRoute' => 'application/index' //controller/action
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {

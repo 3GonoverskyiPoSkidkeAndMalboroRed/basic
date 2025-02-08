@@ -75,9 +75,12 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
+        // var_dump(Yii::$app->security->generatePasswordHash('password')); die;
+
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            Yii::$app->session->setFlash('success', 'Пользователь успешно авторизован!');
+            return $this->redirect('/account');
         }
 
         $model->password = '';
@@ -130,17 +133,21 @@ class SiteController extends Controller
     {
         $model = new \app\models\RegisterForm();
         if ($model->load(Yii::$app->request->post())) {
-            $user = $model->userRegister();
-            // if ($model->userRegister()) {
-                //Вывод прохождения валидации всех полей
-                // var_dump('ok'); die;
-                Yii::debug($user->attributes);
-
+            
+            // $user = $model->userRegister();
+            // if ($user) {
+            //     Yii::debug($user->attributes);
             // }
+
+            
+            if ($user = $model->userRegister()) {
+                Yii::$app->user->login($user);
+                Yii::$app->session->setFlash('success', 'Пользователь успешно зарегистрирован!');
+                return $this->redirect('/account');
+                // Yii::debug($user->attributes);
+            }
+            
         }
-    
-        return $this->render('register', [
-            'model' => $model,
-        ]);
+        return $this->render('register', ['model' => $model,]);
     }
 }
