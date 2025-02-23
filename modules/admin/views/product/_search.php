@@ -28,6 +28,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'category_id') ?>
 
+    <?= $form->field($model, 'size') ?>
+
+    <?= $form->field($model, 'description') ?>
+
     <?php // echo $form->field($model, 'status') ?>
 
     <div class="form-group">

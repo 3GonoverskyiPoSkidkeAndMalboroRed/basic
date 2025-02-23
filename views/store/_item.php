@@ -14,8 +14,11 @@ use yii\helpers\Url;
             <?php endif; ?>
         </div>
         <div style="padding: 10px; height: 30%;">
-            <h3 style="margin: 10px 0; color: black;"><?= Html::encode($model->title) ?></h3>
-            <p style="margin: 5px 0; color: black;">Цена: <?= Html::encode($model->cost) ?> руб.</p>
+            <p style="margin: 10px 0; color: black;"><?= Html::encode($model->title) ?></p>
+            <p><?= Html::encode($model->item_name) ?></p>
+            
+            <p style="margin: 5px 0; color: black;"><?= Html::encode($model->cost) ?> руб.</p>
+            
         </div>
     </a>
 </div> 
