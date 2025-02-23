@@ -7,17 +7,18 @@ use yii\widgets\ListView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 ?>
-<div class="store-index">
-
+<div class="container">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(319.25px, 1fr)); gap: 45px;">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
             'itemView' => '_item', // представление для каждого товара
             'options' => ['tag' => false], // убираем обертку
             'layout' => "{items}", // убираем количество записей
+            'itemOptions' => [
+                'class' => 'col' // добавляем класс для колонки
+            ],
         ]); ?>
     </div>
-
 </div> 

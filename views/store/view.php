@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if ($model->photos): ?>
         <div class="product-image" style="flex: 1; margin-right: 20px;">
-            <?= Html::img('@web/uploads/' . $model->photos[0]->file_name, ['alt' => $model->title, 'class' => 'img-thumbnail', 'style' => 'width: 100%']) ?>
+            <?= Html::img('@web/uploads/' . $model->photos[0]->file_name, ['alt' => $model->title, 'class' => 'img-thumbnail', 'style' => 'border: 1px solid white;width: 100%']) ?>
         </div>
     <?php endif; ?>
 
