@@ -7,6 +7,7 @@ use app\modules\admin\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Category;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -68,6 +69,7 @@ class ProductController extends Controller
     public function actionCreate()
     {
         $model = new Product();
+        $categories = Category::find()->select(['title', 'id'])->indexBy('id')->column();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -79,6 +81,7 @@ class ProductController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'categories' => $categories,
         ]);
     }
 
