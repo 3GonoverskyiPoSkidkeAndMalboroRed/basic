@@ -13,9 +13,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= ListView::widget([
-        'dataProvider' => $dataProvider,
-        'itemView' => '_item', // представление для каждого товара
-    ]); ?>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(319.25px, 1fr)); gap: 45px;">
+        <?= ListView::widget([
+            'dataProvider' => $dataProvider,
+            'itemView' => '_item', // представление для каждого товара
+            'options' => ['tag' => false], // убираем обертку
+            'layout' => "{items}", // убираем количество записей
+        ]); ?>
+    </div>
 
 </div> 
