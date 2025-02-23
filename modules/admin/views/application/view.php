@@ -53,6 +53,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->status->title,
             ],
 
+            [
+                'attribute' => 'reason',
+                'value' => $model->reason,
+                'visible' => (bool)$model->reason,
+            ],
+
+            
+
 
         ],
     ]) ?>

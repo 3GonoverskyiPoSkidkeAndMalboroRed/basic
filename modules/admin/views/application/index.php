@@ -15,7 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="application-index">
 
     <h3><?= Html::encode($this->title) ?></h3>
-
+    <p>
+        <?= Html::a('Интернет магазин', ['/admin/shop'], ['class' => 'btn btn-primary'])?>
+    </p>
     <?php Pjax::begin(); ?>
 
     <?= ListView::widget([

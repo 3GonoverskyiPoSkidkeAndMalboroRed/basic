@@ -30,7 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'service_id',
-                'value' => $model->service->title,
+                'value' => $model->service?->title,
+                'visible' => (bool)$model->service_id,
+            ],
+            [
+                'attribute' => 'other',
+                'value' => $model->other,
+                'visible' => (bool)$model->other,
             ],
             //'other',
 
