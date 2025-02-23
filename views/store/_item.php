@@ -11,7 +11,7 @@ use yii\helpers\Html;
     
     <?php if ($model->photos): ?>
         <div class="product-image">
-            <?= Html::img('@web/uploads/' . $model->photos[0]->file_name, ['alt' => $model->title, 'class' => 'img-thumbnail']) ?>
+            <?= Html::img('@web/uploads/' . $model->photos[0]->file_name, ['alt' => $model->title, 'class' => 'img-thumbnail', 'width' => '319.5', 'height' => '319.5']) ?>
         </div>
     <?php endif; ?>
     
