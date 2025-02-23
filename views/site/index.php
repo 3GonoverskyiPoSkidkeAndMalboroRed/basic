@@ -8,11 +8,8 @@ use app\models\Product;
 // Получаем все товары из базы данных
 $products = Product::find()->with('photos')->all();
 ?>
-
 <div class="site-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
-
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php foreach ($products as $index => $product): ?>
@@ -34,6 +31,5 @@ $products = Product::find()->with('photos')->all();
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
 </div>
 

@@ -24,7 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <p><?= Html::encode($model->cost) ?> руб.</p>
         <p><?= Html::encode($model->size) ?></p>
 
-        <p><?= Html::a('Назад', ['index'], ['class' => 'btn btn-success']) ?></p>
+        <p>
+            <?= Html::a('Добавить в корзину', ['cart/add', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('Назад', ['index'], ['class' => 'btn btn-success']) ?>
+        </p>
     </div>
 
 </div> 
