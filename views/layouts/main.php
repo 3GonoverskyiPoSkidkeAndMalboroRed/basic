@@ -41,6 +41,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'items' => [  
             
             ['label' => 'Каталог', 'url' => ['/store/index']],
+            ['label' => 'Magazine', 'url' => ['/magazine/index']],
             
             Yii::$app->user->isGuest
                 ? ['label' => 'Регистрация', 'url' => ['/site/register']]
@@ -54,7 +55,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 ? ['label' => 'Панель администратора', 'url' => ['/admin']]
                 : '',
 
-           
+            ['label' => 'Корзина', 'url' => ['/cart/index']],
 
             Yii::$app->user->isGuest
                 ? ['label' => 'Вход', 'url' => ['/site/login']]
