@@ -49,6 +49,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'store' => 'store/index',
+                'store/<id:\d+>' => 'store/view',
             ],
         ],
         
