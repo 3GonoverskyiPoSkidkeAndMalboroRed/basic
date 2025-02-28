@@ -1,0 +1,65 @@
+.img-slide {
+    min-width: 500px;
+    max-width: 500px;
+    min-height: 380px;
+    max-height: 380px;
+}
+
+#main {
+    animation: main 1.5s ease 1;
+}
+
+@keyframes main {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.is-invalid, .invalid-feedback {
+    animation: invalid 0.8s ease 1;
+}
+
+.invalid-feedback {
+    animation: feedback 0.8s ease 1;
+}
+
+.is-valid {
+    animation: isvalid 1s ease 1;
+}
+
+@keyframes invalid {
+    0%, 50%, 100% {
+        transform: translateX(0);
+    }
+
+    25%, 75% {
+        transform: translateX(10px);
+    }
+}
+
+@keyframes feedback {
+    0%, 50%, 100% {
+        transform: translateX(0);
+    }
+
+    25%, 75% {
+        transform: translateX(-10px);
+    }
+}
+
+@keyframes isvalid {
+    0%, 50%, 100% {
+        box-shadow: 0 0 1px rgb(8, 126, 2);
+    }
+
+    25%, 75% {
+        box-shadow: 0 0 7px rgb(0, 100, 0);
+    }
+}
+
+
+

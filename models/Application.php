@@ -29,6 +29,9 @@ class Application extends \yii\db\ActiveRecord
 
     const SCENARIO_SERVICE = 'service';
     const SCENARIO_CANCEL = 'cancel';
+    const SCENARIO_OTHER = 'other';
+
+    public bool $check = false;
 
 
     /**
@@ -54,8 +57,11 @@ class Application extends \yii\db\ActiveRecord
             [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => Status::class, 'targetAttribute' => ['status_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
             ['phone', 'match', 'pattern' => '/^\+7\([\d]{3}\)-[\d]{3}-[\d]{2}-[\d]{2}$/', 'message' => 'Телефон в формате +7(XXX)-XXX-XX-XX'],
-            ['service_id', 'required', 'on' => self::SCENARIO_SERVICE],
             ['reason', 'required', 'on' => self::SCENARIO_CANCEL],
+
+            ['service_id', 'required', 'on' => self::SCENARIO_SERVICE],
+            ['check', 'boolean'],
+            ['other', 'required', 'on' => self::SCENARIO_OTHER],
 
         ];
     }
@@ -77,6 +83,8 @@ class Application extends \yii\db\ActiveRecord
             'pay_type_id' => 'Тип оплаты',
             'status_id' => 'Статус',
             'user_id' => 'Клиент',
+            'reason' => 'Причина отмены заявки',
+            'check' => 'Иная услуга',
         ];
     }
 

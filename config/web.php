@@ -49,6 +49,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'store' => 'store/index',
+                'store/<id:\d+>' => 'store/view',
             ],
         ],
         
@@ -60,11 +62,11 @@ $config = [
             'class' => 'app\modules\account\Module',
             'defaultRoute' => 'application/index' //controller/action
         ],
-
         'admin' => [
             'class' => 'app\modules\admin\Module',
             'defaultRoute' => 'application/index' //controller/action
         ],
+        
     ],
 ];
 

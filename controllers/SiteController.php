@@ -98,6 +98,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
+        Yii::$app->session->setFlash('success', 'Вы успешно вышли из системы');
         return $this->goHome();
     }
 

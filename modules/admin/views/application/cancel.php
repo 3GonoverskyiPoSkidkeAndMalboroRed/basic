@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Application $model */
 
-$this->title = 'Отмена заявки: №' . $model->id;
+$this->title = 'Отмена завки: №' . $model->id;
 
 ?>
 <div class="application-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <?= $this->render('_form', [
         'model' => $model,

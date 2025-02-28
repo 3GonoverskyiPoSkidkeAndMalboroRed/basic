@@ -38,7 +38,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
-        'items' => [            
+        'items' => [  
+            
+            ['label' => 'Каталог', 'url' => ['/store/index']],
+            ['label' => 'Magazine', 'url' => ['/magazine/index']],
+            
             Yii::$app->user->isGuest
                 ? ['label' => 'Регистрация', 'url' => ['/site/register']]
                 : '',
@@ -47,11 +51,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 ? ['label' => 'Личный кабинет', 'url' => ['/account']]
                 : '',
 
-                !Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin
-                ? ['label' => 'Панель управления', 'url' => ['/admin']]
+            !Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin
+                ? ['label' => 'Панель администратора', 'url' => ['/admin']]
                 : '',
 
-            
+            ['label' => 'Корзина', 'url' => ['/cart/index']],
 
             Yii::$app->user->isGuest
                 ? ['label' => 'Вход', 'url' => ['/site/login']]
