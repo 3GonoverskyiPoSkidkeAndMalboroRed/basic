@@ -41,21 +41,29 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'items' => [  
             
             ['label' => 'Каталог', 'url' => ['/store/index']],
-            ['label' => 'Magazine', 'url' => ['/magazine/index']],
+
+
+            
             
             Yii::$app->user->isGuest
                 ? ['label' => 'Регистрация', 'url' => ['/site/register']]
                 : '',
 
-            !Yii::$app->user->isGuest && !Yii::$app->user->identity->isAdmin
+            !Yii::$app->user->isGuest && Yii::$app->user->identity && !Yii::$app->user->identity->isAdmin
                 ? ['label' => 'Личный кабинет', 'url' => ['/account']]
                 : '',
 
-            !Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin
+            !Yii::$app->user->isGuest && Yii::$app->user->identity && Yii::$app->user->identity->isAdmin
                 ? ['label' => 'Панель администратора', 'url' => ['/admin']]
                 : '',
 
-            ['label' => 'Корзина', 'url' => ['/cart/index']],
+            !Yii::$app->user->isGuest
+                ? ['label' => 'Корзина', 'url' => ['/cart/index']]
+                : ['label' => 'Корзина', 'url' => ['/cart/index']],
+
+            Yii::$app->user->isGuest && Yii::$app->user->identity && !Yii::$app->user->identity->isAdmin
+            ?['label' => 'Magazine', 'url' => ['/magazine/index']]
+            : '',
 
             Yii::$app->user->isGuest
                 ? ['label' => 'Вход', 'url' => ['/site/login']]
