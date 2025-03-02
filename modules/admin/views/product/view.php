@@ -46,10 +46,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => function ($model) {
                     $photos = $model->photos;
-                    $output = '';
+                    $output = '<div class="photo-gallery">';
                     foreach ($photos as $photo) {
-                        $output .= Html::img('@web/uploads/' . $photo->file_name, ['alt' => $model->title, 'class' => 'img-thumbnail', 'style' => 'width: 100px; height: auto; margin-right: 10px;']);
+                        $output .= Html::img('@web/uploads/' . $photo->file_name, [
+                            'alt' => $model->title,
+                            'class' => 'img-thumbnail',
+                            'style' => 'width: 150px; height: auto; margin-right: 10px;'
+                        ]);
                     }
+                    $output .= '</div>';
                     return $output;
                 },
             ],
@@ -57,3 +62,10 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+<style>
+    .photo-gallery {
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>

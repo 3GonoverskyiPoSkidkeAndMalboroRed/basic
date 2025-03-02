@@ -190,4 +190,20 @@ class ProductController extends Controller
         }
         return $this->redirect(['index']);
     }
+
+    public function actionDeletePhoto($id)
+    {
+        $photo = Photo::findOne($id);
+        if ($photo) {
+            // Удаляем файл с сервера
+            $filePath = 'uploads/' . $photo->file_name;
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+            // Удаляем запись из базы данных
+            $photo->delete();
+        }
+
+        return $this->redirect(['update', 'id' => $photo->product_id]);
+    }
 }

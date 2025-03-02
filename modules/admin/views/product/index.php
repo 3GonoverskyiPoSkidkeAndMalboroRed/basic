@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var app\modules\admin\models\ProductSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
@@ -22,8 +23,28 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Создать товар', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <?php $form = ActiveForm::begin([
+        'method' => 'get',
+        'action' => ['index'],
+    ]); ?>
+
+    <?= $form->field($searchModel, 'size')->dropDownList([
+        '' => 'Выберите размер',
+        'S' => 'S',
+        'M' => 'M',
+        'L' => 'L',
+        'Onesize' => 'Onesize',
+    ])->label('Размер') ?>
+
+    <?= $form->field($searchModel, 'category_id')->dropDownList($categories, ['prompt' => 'Выберите категорию'])->label('Категория') ?>
+
+    <div class="form-group">
+        <?= Html::submitButton('Фильтровать', ['class' => 'btn btn-primary']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

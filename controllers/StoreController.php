@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Product;
+use app\models\Category;
 use yii\web\Controller;
 use yii\data\ActiveDataProvider;
 
@@ -10,12 +11,15 @@ class StoreController extends Controller
 {
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Product::find(),
-        ]);
+        $searchModel = new \app\modules\admin\models\ProductSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+        $categories = Category::find()->select(['id', 'title'])->indexBy('id')->column();
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'categories' => $categories,
         ]);
     }
 

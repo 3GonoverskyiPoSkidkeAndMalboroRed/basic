@@ -29,7 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'pagination' => false,
             ]),
             'itemView' => function ($model) {
-                return Html::img('@web/uploads/' . $model->file_name, ['class' => 'img-thumbnail', 'style' => 'width: 100px; height: auto; margin-right: 10px;']);
+                return Html::img('@web/uploads/' . $model->file_name, ['class' => 'img-thumbnail', 'style' => 'width: 100px; height: auto; margin-right: 10px;']) .
+                       Html::a('Удалить', ['product/delete-photo', 'id' => $model->id], [
+                           'class' => 'btn btn-danger btn-xs',
+                           'data' => [
+                               
+                               'method' => 'post',
+                           ],
+                       ]);
             },
         ]); ?>
     </div>
