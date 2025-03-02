@@ -8,6 +8,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Category;
+use yii\web\UploadedFile;
+use Yii;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -71,8 +73,8 @@ class ProductController extends Controller
         $model = new Product();
         $categories = Category::find()->select(['title', 'id'])->indexBy('id')->column();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {

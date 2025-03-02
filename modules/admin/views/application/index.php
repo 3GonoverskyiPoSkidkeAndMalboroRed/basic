@@ -20,11 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
     <?php Pjax::begin(); ?>
 
-    <?= ListView::widget([
-        'dataProvider' => $dataProvider,
-        'itemOptions' => ['class' => 'item'],
-        'itemView' => 'item'
-    ]) ?>
+
 
     <?php Pjax::end(); ?>
 
