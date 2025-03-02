@@ -106,13 +106,27 @@ class ProductController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $categories = Category::find()->select(['title', 'id'])->indexBy('id')->column();
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            if ($model->save()) {
+                // Обновление порядка фотографий
+                $photos = UploadedFile::getInstances($model, 'photos');
+                foreach ($photos as $index => $photo) {
+                    $photoModel = new Photo();
+                    $photoModel->product_id = $model->id;
+                    $photoModel->file_name = $photo->baseName . '.' . $photo->extension;
+                    $photoModel->order = $index; // Устанавливаем порядок
+                    $photo->saveAs('uploads/' . $photoModel->file_name);
+                    $photoModel->save();
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [
             'model' => $model,
+            'categories' => $categories,
         ]);
     }
 
@@ -144,5 +158,36 @@ class ProductController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionUploadImage()
+    {
+        $model = new Photo();
+        $model->product_id = Yii::$app->request->post('id'); // Получаем ID товара, если нужно
+
+        if (Yii::$app->request->isPost) {
+            $image = UploadedFile::getInstanceByName('file'); // Получаем файл
+            if ($image) {
+                $model->file_name = $image->baseName . '.' . $image->extension;
+                if ($model->save()) {
+                    $image->saveAs('uploads/' . $model->file_name);
+                    return json_encode(['link' => '@web/uploads/' . $model->file_name]);
+                }
+            }
+        }
+        return json_encode(['error' => 'Ошибка загрузки']);
+    }
+
+    public function actionUpdateOrder()
+    {
+        $order = Yii::$app->request->post('order'); // Получаем новый порядок
+        foreach ($order as $index => $id) {
+            $photo = Photo::findOne($id);
+            if ($photo) {
+                $photo->order = $index; // Устанавливаем новый порядок
+                $photo->save();
+            }
+        }
+        return $this->redirect(['index']);
     }
 }

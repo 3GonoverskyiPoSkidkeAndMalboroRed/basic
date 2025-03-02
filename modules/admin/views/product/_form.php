@@ -2,8 +2,6 @@
 
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
-use froala\froalaeditor\FroalaEditor;
-use froala\froalaeditor\FroalaEditorWidget;
 
 /** @var yii\web\View $this */
 /** @var app\models\Product $model */
@@ -18,13 +16,7 @@ use froala\froalaeditor\FroalaEditorWidget;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->widget(FroalaEditorWidget::class, [
-        'options' => [
-            'toolbarInline' => false,
-            'toolbarVisibleWithoutSelection' => true,
-            'height' => 300,
-        ],
-    ]) ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'size')->dropDownList(['prompt' => 'Выберите размер', 'S' => 'S', 'M' => 'M', 'L' => 'L', 'Onesize' => 'Onesize']) ?>
 
@@ -36,6 +28,7 @@ use froala\froalaeditor\FroalaEditorWidget;
 
     <?= $form->field($model, 'item_name')->textInput(['maxlength' => true]) ?>
 
+    <!-- Поле для загрузки изображений -->
     <?= $form->field($model, 'photos[]')->fileInput(['multiple' => true]) ?>
 
     <div class="form-group">

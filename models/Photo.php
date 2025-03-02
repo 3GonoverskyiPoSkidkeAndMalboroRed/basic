@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property int $product_id
  * @property string $file_name
+ * @property int $order
  *
  * @property Product $product
  */
@@ -30,7 +31,7 @@ class Photo extends \yii\db\ActiveRecord
     {
         return [
             [['product_id', 'file_name'], 'required'],
-            [['product_id'], 'integer'],
+            [['product_id', 'order'], 'integer'],
             [['file_name'], 'string', 'max' => 255],
             [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::class, 'targetAttribute' => ['product_id' => 'id']],
         ];
@@ -45,6 +46,7 @@ class Photo extends \yii\db\ActiveRecord
             'id' => 'ID',
             'product_id' => 'Product ID',
             'file_name' => 'File Name',
+            'order' => 'Order',
         ];
     }
 

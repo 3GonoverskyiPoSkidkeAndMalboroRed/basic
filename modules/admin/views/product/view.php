@@ -35,7 +35,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'cost',
             'category_id',
             'size',
-            'description',
+            [
+                'label' => 'Описание',
+                'format' => 'raw',
+                'value' => $model->description,
+            ],
             'status',
             [
                 'label' => 'Фотографии',
