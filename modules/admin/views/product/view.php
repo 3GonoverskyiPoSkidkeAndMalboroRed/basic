@@ -37,6 +37,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'size',
             'description',
             'status',
+            [
+                'label' => 'Фотографии',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    $photos = $model->photos;
+                    $output = '';
+                    foreach ($photos as $photo) {
+                        $output .= Html::img('@web/uploads/' . $photo->file_name, ['alt' => $model->title, 'class' => 'img-thumbnail', 'style' => 'width: 100px; height: auto; margin-right: 10px;']);
+                    }
+                    return $output;
+                },
+            ],
         ],
     ]) ?>
 

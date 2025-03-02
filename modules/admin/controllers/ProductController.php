@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\Category;
 use yii\web\UploadedFile;
 use Yii;
+use app\models\Photo;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -74,7 +75,15 @@ class ProductController extends Controller
         $categories = Category::find()->select(['title', 'id'])->indexBy('id')->column();
 
         if ($model->load(Yii::$app->request->post())) {
+            $photos = UploadedFile::getInstances($model, 'photos');
             if ($model->save()) {
+                foreach ($photos as $photo) {
+                    $photoModel = new Photo();
+                    $photoModel->product_id = $model->id;
+                    $photoModel->file_name = $photo->baseName . '.' . $photo->extension;
+                    $photo->saveAs('uploads/' . $photoModel->file_name);
+                    $photoModel->save();
+                }
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
