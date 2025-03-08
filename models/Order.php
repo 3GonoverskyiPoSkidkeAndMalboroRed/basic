@@ -15,4 +15,9 @@ class Order extends ActiveRecord
     {
         return $this->hasOne(Status::class, ['id' => 'status_id']);
     }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
 }

@@ -51,7 +51,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 
             !Yii::$app->user->isGuest && Yii::$app->user->identity && Yii::$app->user->identity->isAdmin
-                ? ['label' => 'Панель администратора', 'url' => ['/admin']]
+                ? ['label' => 'Панель администратора', 'url' => ['admin/order/my-orders']]
                 : '',
 
             !Yii::$app->user->isGuest
