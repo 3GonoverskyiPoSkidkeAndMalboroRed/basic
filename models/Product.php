@@ -54,7 +54,7 @@ class Product extends \yii\db\ActiveRecord
             [['title', 'item_name'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 1000],
             [['size'], 'string', 'max' => 255],
-            [['image'], 'file', 'extensions' => 'png, jpg, jpeg'],
+            [['image'], 'file', 'extensions' => 'png, jpg, jpeg', 'maxFiles' => 5],
             [['image_path'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
         ];
@@ -96,11 +96,15 @@ class Product extends \yii\db\ActiveRecord
 
     public function upload()
     {
+        $filePaths = [];
         if ($this->validate()) {
-            $filePath = 'uploads/' . $this->image->baseName . '.' . $this->image->extension;
-            if ($this->image->saveAs($filePath)) {
-                return $filePath;
+            foreach ($this->image as $file) {
+                $filePath = 'uploads/' . $file->baseName . '.' . $file->extension;
+                if ($file->saveAs($filePath)) {
+                    $filePaths[] = $filePath;
+                }
             }
+            return $filePaths;
         }
         return false;
     }

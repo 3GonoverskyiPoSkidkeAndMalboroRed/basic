@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'category_id')->dropDownList($categories, ['prompt' => 'Выберите категорию']) ?>
     <?= $form->field($model, 'size')->dropDownList([0 => 'XS', 1 => 'S', 2 => 'M', 3 => 'L', 4 => 'XL', 5 => 'XXL', 6 => 'One size'], ['prompt' => 'Выберите размер']) ?>
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-    <?= $form->field($model, 'image')->fileInput() ?>
+    <?= $form->field($model, 'image[]')->fileInput(['multiple' => true]) ?>
 
     <?php if ($model->hasErrors()): ?>
         <div class="alert alert-danger">

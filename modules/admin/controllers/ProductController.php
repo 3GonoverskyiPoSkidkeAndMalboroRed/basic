@@ -18,19 +18,21 @@ class ProductController extends Controller
         $categories = Category::find()->select(['id', 'title'])->indexBy('id')->column();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->image = UploadedFile::getInstance($model, 'image'); // Получите загружаемый файл
-            if ($model->image) { // Убедитесь, что файл загружен
+            $model->image = UploadedFile::getInstances($model, 'image'); // Получите загружаемые файлы
+            if ($model->image) { // Убедитесь, что файлы загружены
                 if ($model->validate() && $model->save()) {
-                    $imagePath = $model->upload(); // Загрузите изображение
-                    if ($imagePath) {
-                        // Сохраните путь к изображению в таблице Photo
-                        $model->savePhoto($model->image->baseName . '.' . $model->image->extension);
+                    $imagePaths = $model->upload(); // Загрузите изображения
+                    if ($imagePaths) {
+                        foreach ($imagePaths as $imagePath) {
+                            // Сохраните путь к каждому изображению в таблице Photo
+                            $model->savePhoto(basename($imagePath));
+                        }
                     }
                     Yii::$app->session->setFlash('success', 'Товар успешно добавлен.');
                     return $this->redirect(['index']); // Перенаправление на страницу списка товаров
                 }
             } else {
-                Yii::$app->session->setFlash('error', 'Ошибка загрузки изображения.'); // Сообщение об ошибке
+                Yii::$app->session->setFlash('error', 'Ошибка загрузки изображений.'); // Сообщение об ошибке
             }
         }
 
@@ -57,19 +59,21 @@ class ProductController extends Controller
         $categories = Category::find()->select(['id', 'title'])->indexBy('id')->column();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->image = UploadedFile::getInstance($model, 'image'); // Получите загружаемый файл
-            if ($model->image) { // Убедитесь, что файл загружен
+            $model->image = UploadedFile::getInstances($model, 'image'); // Получите загружаемые файлы
+            if ($model->image) { // Убедитесь, что файлы загружены
                 if ($model->validate() && $model->save()) {
-                    $imagePath = $model->upload(); // Загрузите изображение
-                    if ($imagePath) {
-                        // Сохраните путь к изображению в таблице Photo
-                        $model->savePhoto($model->image->baseName . '.' . $model->image->extension);
+                    $imagePaths = $model->upload(); // Загрузите изображения
+                    if ($imagePaths) {
+                        foreach ($imagePaths as $imagePath) {
+                            // Сохраните путь к каждому изображению в таблице Photo
+                            $model->savePhoto(basename($imagePath));
+                        }
                     }
                     Yii::$app->session->setFlash('success', 'Товар успешно обновлен.');
                     return $this->redirect(['index']); // Перенаправление на страницу списка товаров
                 }
             } else {
-                Yii::$app->session->setFlash('error', 'Ошибка загрузки изображения.'); // Сообщение об ошибке
+                Yii::$app->session->setFlash('error', 'Ошибка загрузки изображений.'); // Сообщение об ошибке
             }
         }
 

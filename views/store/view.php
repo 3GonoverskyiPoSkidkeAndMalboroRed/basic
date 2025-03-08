@@ -11,11 +11,15 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-view" style="display: flex; width: 100%; padding: 10px;overflow: hidden;">
 
-    <?php if ($model->photos): ?>
-        <div class="product-image" style="flex: 1; margin-right: 20px;">
-            <?= Html::img('@web/uploads/' . $model->photos[0]->file_name, ['alt' => $model->title, 'class' => 'img-thumbnail', 'style' => 'border: 1px solid white;width: 100%']) ?>
-        </div>
-    <?php endif; ?>
+    <div class="product-images" style="flex: 1; margin-right: 20px;">
+        <?php if ($model->photos): ?>
+            <?php foreach ($model->photos as $photo): ?>
+                <?= Html::img('@web/uploads/' . $photo->file_name, ['alt' => $model->title, 'class' => 'img-thumbnail', 'style' => 'border: 1px solid white;width: 100%; margin-bottom: 10px;']) ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Нет изображений</p>
+        <?php endif; ?>
+    </div>
 
     <div style="flex: 2;">
         <h2><?= Html::encode($this->title) ?></h2>
