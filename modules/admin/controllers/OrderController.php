@@ -59,4 +59,24 @@ class OrderController extends Controller
             'orders' => $orders,
         ]);
     }
+
+    public function actionUpdateStatus($id)
+    {
+        $order = Order::findOne($id);
+        if ($order === null) {
+            throw new \yii\web\NotFoundHttpException('Заказ не найден.');
+        }
+
+        if (Yii::$app->request->isPost) {
+            $order->status_id = Yii::$app->request->post('Order')['status_id']; // Получите новый статус из формы
+            if ($order->save()) {
+                Yii::$app->session->setFlash('success', 'Статус заказа изменен.');
+                return $this->redirect(['my-orders']);
+            }
+        }
+
+        return $this->render('update-status', [
+            'order' => $order,
+        ]);
+    }
 } 

@@ -35,7 +35,7 @@ $this->title = 'Заказы (Админ)';
                 <td><?= Html::encode($order->created_at) ?></td>
                 <td><?= Html::encode($order->user->full_name) ?></td>
                 <td>
-                    <?= Html::a('Изменить статус', ['order/update', 'id' => $order->id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Изменить статус', ['order/update-status', 'id' => $order->id], ['class' => 'btn btn-primary']) ?>
                 </td>
             </tr>
         <?php endforeach; ?>
