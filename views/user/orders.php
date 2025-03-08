@@ -29,7 +29,7 @@ $this->title = 'Мои заказы';
                     <?php endif; ?>
                 </td>
                 <td><?= Html::encode($order->product->title) ?></td>
-                <td><?= Html::encode($order->status_id) ?></td>
+                <td><?= Html::encode($order->status->title) ?></td>
                 <td><?= Html::encode($order->created_at) ?></td>
             </tr>
         <?php endforeach; ?>

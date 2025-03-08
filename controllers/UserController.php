@@ -10,8 +10,8 @@ class UserController extends Controller
 {
     public function actionOrders()
     {
-        // Получаем заказы текущего пользователя
-        $orders = Order::find()->where(['user_id' => Yii::$app->user->id])->with('product')->all();
+        // Получаем заказы текущего пользователя с информацией о статусе
+        $orders = Order::find()->where(['user_id' => Yii::$app->user->id])->with(['product', 'status'])->all();
 
         return $this->render('orders', [
             'orders' => $orders,

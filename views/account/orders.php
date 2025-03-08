@@ -14,8 +14,11 @@ $this->title = 'Мои заказы';
         <tr>
             <th>Фото</th>
             <th>Название товара</th>
+            <th>Количество</th>
+            <th>Цена</th>
             <th>Статус</th>
             <th>Дата создания</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -29,8 +32,13 @@ $this->title = 'Мои заказы';
                     <?php endif; ?>
                 </td>
                 <td><?= Html::encode($order->product->title) ?></td>
-                <td><?= Html::encode($order->status_id) ?></td>
+                <td><?= Html::encode($order->quantity) ?></td>
+                <td><?= Html::encode($order->product->cost) ?> руб.</td>
+                <td><?= Html::encode($order->status->title) ?></td>
                 <td><?= Html::encode($order->created_at) ?></td>
+                <td>
+                    <?= Html::a('Детали', ['user/view', 'id' => $order->id], ['class' => 'btn btn-info']) ?>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
