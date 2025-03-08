@@ -64,6 +64,7 @@ $config = [
         ],
         'admin' => [
             'class' => 'app\modules\admin\Module',
+            
         ],
         
     ],

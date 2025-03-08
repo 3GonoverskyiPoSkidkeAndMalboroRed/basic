@@ -39,9 +39,10 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'category_id', 'item_name'], 'required'],
-            [['count', 'cost', 'category_id', 'status'], 'integer'],
-            [['title'], 'string', 'max' => 1000],
-            [['size', 'description'], 'string', 'max' => 1000],
+            [['count', 'cost', 'category_id'], 'integer'],
+            [['title', 'item_name'], 'string', 'max' => 255],
+            [['description'], 'string', 'max' => 1000],
+            [['size'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -57,7 +58,6 @@ class Product extends \yii\db\ActiveRecord
             'count' => 'Count',
             'cost' => 'Cost',
             'category_id' => 'Category ID',
-            'status' => 'Status',
         ];
     }
 
