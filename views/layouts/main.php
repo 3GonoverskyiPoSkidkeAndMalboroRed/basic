@@ -50,9 +50,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 : '',
 
 
-            !Yii::$app->user->isGuest && Yii::$app->user->identity && Yii::$app->user->identity->isAdmin
-                ? ['label' => 'Панель администратора', 'url' => ['admin/order/my-orders']]
-                : '',
+
 
             !Yii::$app->user->isGuest
                 ? ['label' => 'Корзина', 'url' => ['/cart/index']]
@@ -62,8 +60,13 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ?['label' => 'Magazine', 'url' => ['/magazine/index']]
             : '',
 
-            !Yii::$app->user->isGuest
+            !Yii::$app->user->isGuest && !Yii::$app->user->identity->isAdmin
                 ? ['label' => 'Мои заказы', 'url' => ['/user/orders']]
+                : '',
+
+
+                !Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin
+                ? ['label' => 'Админка', 'url' => ['/admin']]
                 : '',
 
             Yii::$app->user->isGuest

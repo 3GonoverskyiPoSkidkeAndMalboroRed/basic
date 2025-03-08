@@ -12,51 +12,11 @@ class OrderController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Order::find()->with(['product', 'status', 'user']), // Предполагается, что у вас есть связь с моделью User
+            'query' => Order::find()->with(['product', 'status', 'user']),
         ]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    public function actionUpdate($id)
-    {
-        $order = Order::findOne($id);
-        if ($order === null) {
-            throw new \yii\web\NotFoundHttpException('Заказ не найден.');
-        }
-
-        if (Yii::$app->request->isPost) {
-            $order->status_id = Yii::$app->request->post('status_id'); // Получите новый статус из формы
-            if ($order->save()) {
-                Yii::$app->session->setFlash('success', 'Статус заказа изменен.');
-                return $this->redirect(['index']);
-            }
-        }
-
-        return $this->render('update', [
-            'order' => $order,
-        ]);
-    }
-
-    public function actionAdminOrders()
-    {
-        // Получаем все заказы с информацией о статусе
-        $orders = Order::find()->with(['product', 'status', 'user'])->all();
-
-        return $this->render('admin-orders', [
-            'orders' => $orders,
-        ]);
-    }
-
-    public function actionMyOrders()
-    {
-        // Получаем все заказы с информацией о статусе
-        $orders = Order::find()->with(['product', 'status', 'user'])->all();
-
-        return $this->render('my-orders', [
-            'orders' => $orders,
         ]);
     }
 
@@ -67,11 +27,25 @@ class OrderController extends Controller
             throw new \yii\web\NotFoundHttpException('Заказ не найден.');
         }
 
-        if (Yii::$app->request->isPost) {
-            $order->status_id = Yii::$app->request->post('Order')['status_id']; // Получите новый статус из формы
-            if ($order->save()) {
-                Yii::$app->session->setFlash('success', 'Статус заказа изменен.');
-                return $this->redirect(['my-orders']);
+        if (Yii::$app->request->isPost || Yii::$app->request->get('status')) {
+            $status = Yii::$app->request->get('status');
+            if ($status) {
+                // Устанавливаем новый статус
+                switch ($status) {
+                    case 'in_progress':
+                        $order->status_id = 2; // В обработке
+                        break;
+                    case 'rejected':
+                        $order->status_id = 3; // Отклонен
+                        break;
+                    case 'completed':
+                        $order->status_id = 4; // Выполнен
+                        break;
+                }
+                if ($order->save()) {
+                    Yii::$app->session->setFlash('success', 'Статус заказа изменен.');
+                    return $this->redirect(['index']);
+                }
             }
         }
 

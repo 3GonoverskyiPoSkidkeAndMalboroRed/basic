@@ -64,7 +64,6 @@ $config = [
         ],
         'admin' => [
             'class' => 'app\modules\admin\Module',
-            'defaultRoute' => 'application/index' //controller/action
         ],
         
     ],
