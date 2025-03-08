@@ -49,9 +49,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 ? ['label' => 'Регистрация', 'url' => ['/site/register']]
                 : '',
 
-            !Yii::$app->user->isGuest && Yii::$app->user->identity && !Yii::$app->user->identity->isAdmin
-                ? ['label' => 'Личный кабинет', 'url' => ['/account']]
-                : '',
 
             !Yii::$app->user->isGuest && Yii::$app->user->identity && Yii::$app->user->identity->isAdmin
                 ? ['label' => 'Панель администратора', 'url' => ['/admin']]
@@ -64,6 +61,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             Yii::$app->user->isGuest && Yii::$app->user->identity && !Yii::$app->user->identity->isAdmin
             ?['label' => 'Magazine', 'url' => ['/magazine/index']]
             : '',
+
+            !Yii::$app->user->isGuest
+                ? ['label' => 'Мои заказы', 'url' => ['/user/orders']]
+                : '',
 
             Yii::$app->user->isGuest
                 ? ['label' => 'Вход', 'url' => ['/site/login']]

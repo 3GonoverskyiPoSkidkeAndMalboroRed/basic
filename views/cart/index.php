@@ -43,7 +43,7 @@ $this->title = 'Корзина';
                 <?php if (Yii::$app->user->isGuest): ?>
                     <span>Чтобы оформить заказ, вам нужно <a href="<?= \yii\helpers\Url::to(['site/login']) ?>">войти</a>.</span>
                 <?php else: ?>
-                    <?= Html::a('Оформить заказ', ['order/checkout'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('Оформить заказ', ['cart/checkout'], ['class' => 'btn btn-success']) ?>
                 <?php endif; ?>
             </h2>
         </div>
