@@ -79,6 +79,13 @@ class ProductController extends Controller
         ]);
     }
 
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete(); // Удалить модель по ID
+        Yii::$app->session->setFlash('success', 'Товар успешно удален.'); // Сообщение об успешном удалении
+        return $this->redirect(['index']); // Перенаправление на страницу списка товаров
+    }
+
     protected function findModel($id)
     {
         if (($model = Product::findOne($id)) !== null) {
