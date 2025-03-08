@@ -6,7 +6,7 @@ use yii\helpers\Url;
 /** @var app\models\Product $model */
 
 ?>
-<div class="item" style="width: 100%; margin-bottom: 20px; border: 1px solid #ccc; padding: 10px;">
+<div class="item" style="width: 100%; margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 0;">
     <a href="<?= Url::to(['view', 'id' => $model->id]) ?>" style="text-decoration: none; color: inherit;">
         <div class="product-image" style="height: 400px; overflow: hidden;">
             <?php if ($model->photos): ?>
