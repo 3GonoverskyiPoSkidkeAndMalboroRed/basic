@@ -14,6 +14,9 @@ class StoreController extends Controller
         $searchModel = new \app\modules\admin\models\ProductSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
 
+        // Добавьте условие для фильтрации по статусу
+        $dataProvider->query->andWhere(['status' => 1]); // Предположим, что 1 - это статус "активный"
+
         $categories = Category::find()->select(['id', 'title'])->indexBy('id')->column();
 
         return $this->render('index', [
