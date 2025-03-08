@@ -36,10 +36,10 @@ class OrderController extends Controller
                         $order->status_id = 2; // В обработке
                         break;
                     case 'rejected':
-                        $order->status_id = 3; // Отклонен
+                        $order->status_id = 4; // Отклонен
                         break;
                     case 'completed':
-                        $order->status_id = 4; // Выполнен
+                        $order->status_id = 3; // Выполнен
                         break;
                 }
                 if ($order->save()) {
