@@ -18,12 +18,23 @@ use yii\web\UploadedFile;
  * @property string $description
  * @property string|null $item_name
  * @property UploadedFile $image
+ * @property string|null $image_path
  *
  * @property Category $category
  * @property Photo[] $photos
  */
 class Product extends \yii\db\ActiveRecord
 {
+    /**
+     * @property UploadedFile $image
+     */
+    public $image;
+
+    /**
+     * @property string|null $image_path
+     */
+    public $image_path;
+
     /**
      * {@inheritdoc}
      */
@@ -43,6 +54,8 @@ class Product extends \yii\db\ActiveRecord
             [['title', 'item_name'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 1000],
             [['size'], 'string', 'max' => 255],
+            [['image'], 'file', 'extensions' => 'png, jpg, jpeg'],
+            [['image_path'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -84,10 +97,19 @@ class Product extends \yii\db\ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $this->image->saveAs('uploads/' . $this->image->baseName . '.' . $this->image->extension);
-            return true;
-        } else {
-            return false;
+            $filePath = 'uploads/' . $this->image->baseName . '.' . $this->image->extension;
+            if ($this->image->saveAs($filePath)) {
+                return $filePath;
+            }
         }
+        return false;
+    }
+
+    public function savePhoto($fileName)
+    {
+        $photo = new Photo();
+        $photo->product_id = $this->id;
+        $photo->file_name = $fileName;
+        return $photo->save();
     }
 }

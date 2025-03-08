@@ -8,6 +8,7 @@ use app\models\Category;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
+use yii\web\UploadedFile;
 
 class ProductController extends Controller
 {
@@ -16,9 +17,21 @@ class ProductController extends Controller
         $model = new Product();
         $categories = Category::find()->select(['id', 'title'])->indexBy('id')->column();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Товар успешно добавлен.');
-            return $this->redirect(['index']); // Перенаправление на страницу списка товаров
+        if ($model->load(Yii::$app->request->post())) {
+            $model->image = UploadedFile::getInstance($model, 'image'); // Получите загружаемый файл
+            if ($model->image) { // Убедитесь, что файл загружен
+                if ($model->validate() && $model->save()) {
+                    $imagePath = $model->upload(); // Загрузите изображение
+                    if ($imagePath) {
+                        // Сохраните путь к изображению в таблице Photo
+                        $model->savePhoto($model->image->baseName . '.' . $model->image->extension);
+                    }
+                    Yii::$app->session->setFlash('success', 'Товар успешно добавлен.');
+                    return $this->redirect(['index']); // Перенаправление на страницу списка товаров
+                }
+            } else {
+                Yii::$app->session->setFlash('error', 'Ошибка загрузки изображения.'); // Сообщение об ошибке
+            }
         }
 
         return $this->render('create', [
