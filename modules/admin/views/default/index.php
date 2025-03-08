@@ -12,5 +12,7 @@ $this->title = 'Панель администратора';
 <p>
     <?= Html::a('Перейти к заказам', ['/admin/order/index'], ['class' => 'btn btn-primary']) ?>
     <?= Html::a('Создать товар', ['/admin/product/create'], ['class' => 'btn btn-success']) ?>
+    <?= Html::a('Список товаров', ['/admin/product/index'], ['class' => 'btn btn-info']) ?>
+
 </p>
 

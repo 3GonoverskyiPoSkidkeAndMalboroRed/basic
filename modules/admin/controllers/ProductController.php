@@ -51,5 +51,41 @@ class ProductController extends Controller
         ]);
     }
 
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id); // Найти модель по ID
+        $categories = Category::find()->select(['id', 'title'])->indexBy('id')->column();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->image = UploadedFile::getInstance($model, 'image'); // Получите загружаемый файл
+            if ($model->image) { // Убедитесь, что файл загружен
+                if ($model->validate() && $model->save()) {
+                    $imagePath = $model->upload(); // Загрузите изображение
+                    if ($imagePath) {
+                        // Сохраните путь к изображению в таблице Photo
+                        $model->savePhoto($model->image->baseName . '.' . $model->image->extension);
+                    }
+                    Yii::$app->session->setFlash('success', 'Товар успешно обновлен.');
+                    return $this->redirect(['index']); // Перенаправление на страницу списка товаров
+                }
+            } else {
+                Yii::$app->session->setFlash('error', 'Ошибка загрузки изображения.'); // Сообщение об ошибке
+            }
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+            'categories' => $categories,
+        ]);
+    }
+
+    protected function findModel($id)
+    {
+        if (($model = Product::findOne($id)) !== null) {
+            return $model;
+        }
+        throw new NotFoundHttpException('Запрашиваемая страница не найдена.');
+    }
+
     // Добавьте другие методы, такие как actionIndex, actionUpdate и т.д.
 } 

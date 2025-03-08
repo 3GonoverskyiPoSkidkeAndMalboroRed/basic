@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'category.title', // Предполагаем, что у вас есть связь с моделью Category
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {update} {delete}',
+            'template' => '{update} {delete}',
         ],
     ],
 ]); ?> 
