@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ListView;
 use yii\widgets\ActiveForm;
 use app\modules\admin\models\ProductSearch; // Импортируем модель поиска
+use app\models\Product; // Импортируем модель продукта
 
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */

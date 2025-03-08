@@ -10,7 +10,7 @@ use app\models\News;
 $newProducts = Product::find()->with('photos')->limit(3)->all(); // Получаем только 3 товара с фотографиями
 ?>
 
-<div class="site-index" style="padding: 0;">
+<div class="container-fluid" style="padding: 0;">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <h2>Новые поступления</h2>

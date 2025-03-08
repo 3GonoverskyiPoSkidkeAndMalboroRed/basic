@@ -35,6 +35,16 @@ class Product extends \yii\db\ActiveRecord
      */
     public $image_path;
 
+    public static $sizes = [
+        0 => 'XS',
+        1 => 'S',
+        2 => 'M',
+        3 => 'L',
+        4 => 'XL',
+        5 => 'XXL',
+        6 => 'One size',
+    ];
+
     /**
      * {@inheritdoc}
      */

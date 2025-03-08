@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'count')->textInput() ?>
     <?= $form->field($model, 'cost')->textInput() ?>
     <?= $form->field($model, 'category_id')->dropDownList($categories, ['prompt' => 'Выберите категорию']) ?>
-    <?= $form->field($model, 'size')->dropDownList([0 => 'XS', 1 => 'S', 2 => 'M', 3 => 'L', 4 => 'XL', 5 => 'XXL', 6 => 'One size'], ['prompt' => 'Выберите размер']) ?>
+    <?= $form->field($model, 'size')->dropDownList(Product::$sizes, ['prompt' => 'Выберите размер']) ?>
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'image[]')->fileInput(['multiple' => true]) ?>
 

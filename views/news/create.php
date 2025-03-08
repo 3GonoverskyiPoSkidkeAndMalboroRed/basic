@@ -11,8 +11,7 @@ $this->title = 'Добавить новость';
 $this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="news-create">
-
+<div class="container-fluid" style="padding: 0;">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <div class="news-form">
