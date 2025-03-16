@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Category;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 use yii\widgets\ActiveForm;
@@ -26,7 +27,7 @@ use app\models\Product; // Импортируем модель продукта
     </div>
     
     <div class="form-group">
-        <?= $form->field($searchModel, 'category_id')->dropDownList($categories, ['prompt' => 'Выберите категорию']) ?>
+        <?= $form->field($searchModel, 'category_id')->dropDownList(Category::getCategories(), ['prompt' => 'Выберите категорию']) ?>
     </div>
     
     <?php ActiveForm::end(); ?>
