@@ -1,17 +1,14 @@
 body {
-    margin: 0;
-    padding: 0;
-    margin-left: 0;
-    margin-right: 0;
+
+    background-color: #000000; /* Черный цвет фона */
+    color: #ffffff; /* Белый цвет текста для контраста */
 }
 
-.container-fluid {
-    width: 100%;
-    max-width: none;
-    padding: 0;
-    margin-left: 0;
-    margin-right: 0;
+.main-background {
+
 }
+
+
 
 .row {
     margin-left: 0;

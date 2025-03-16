@@ -22,17 +22,11 @@ use app\models\Product; // Импортируем модель продукта
     ]); ?>
     
     <div class="form-group">
-        <?= $form->field($searchModel, 'size')->dropDownList([
-            '' => 'Выберите размер',
-            'S' => 'S',
-            'M' => 'M',
-            'L' => 'L',
-            'Onesize' => 'Onesize',
-        ], ['options' => [$searchModel->size => ['Selected' => true]]])->label('Размер') ?>
+        <?= $form->field($searchModel, 'size')->dropDownList(Product::$sizes, ['prompt' => 'Выберите размер']) ?>
     </div>
     
     <div class="form-group">
-        <?= $form->field($searchModel, 'category_id')->dropDownList($categories, ['prompt' => 'Выберите категорию', 'options' => [$searchModel->category_id => ['Selected' => true]]])->label('Категория') ?>
+        <?= $form->field($searchModel, 'category_id')->dropDownList($categories, ['prompt' => 'Выберите категорию']) ?>
     </div>
     
     <?php ActiveForm::end(); ?>
@@ -40,11 +34,11 @@ use app\models\Product; // Импортируем модель продукта
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
-            'itemView' => '_item', // представление для каждого товара
-            'options' => ['tag' => false], // убираем обертку
-            'layout' => "{items}", // убираем количество записей
+            'itemView' => '_item',
+            'options' => ['tag' => false],
+            'layout' => "{items}",
             'itemOptions' => [
-                'class' => 'col' // добавляем класс для колонки
+                'class' => 'col'
             ],
         ]); ?>
     </div>

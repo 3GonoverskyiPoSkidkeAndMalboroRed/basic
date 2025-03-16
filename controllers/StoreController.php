@@ -14,9 +14,7 @@ class StoreController extends Controller
         $searchModel = new \app\modules\admin\models\ProductSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
 
-        // Убедитесь, что здесь нет условия по статусу
-        // $dataProvider->query->andWhere(['status' => 1]); // Удалите или закомментируйте эту строку
-
+        // Получаем категории с названиями
         $categories = Category::find()->select(['id', 'title'])->indexBy('id')->column();
 
         return $this->render('index', [

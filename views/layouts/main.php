@@ -26,15 +26,15 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 ">
 <?php $this->beginBody() ?>
 
 <header id="header">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Мой Не Сам',
+        'brandLabel' => Html::img('@web/img/rop.gif', ['alt' => 'Логотип', 'style' => 'height: 40px; border-radius: 50%;']),
         'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+        'options' => ['class' => 'navbar-expand-md navbar-dark bg-black fixed-top']
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
