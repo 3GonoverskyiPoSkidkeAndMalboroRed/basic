@@ -7,8 +7,6 @@ use app\models\Product;
 /** @var app\models\Product $model */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Каталог товаров', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-view" style="background-color: #000; color: #fff;">
     <div class="row">
