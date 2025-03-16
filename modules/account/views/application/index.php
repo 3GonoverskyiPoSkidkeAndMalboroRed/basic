@@ -17,16 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
-        <?= Html::a('Создание заявки', ['create'], ['class' => 'btn btn-outline-success']) ?>
+       
     </p>
 
     <?php Pjax::begin(); ?>
 
-    <?= ListView::widget([
-        'dataProvider' => $dataProvider,
-        'itemOptions' => ['class' => 'item'],
-        'itemView' => 'item'
-    ]) ?>
+
+
 
     <?php Pjax::end(); ?>
 

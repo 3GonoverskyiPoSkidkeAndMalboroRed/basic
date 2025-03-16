@@ -51,6 +51,9 @@ $config = [
             'rules' => [
                 'store' => 'store/index',
                 'store/<id:\d+>' => 'store/view',
+                'music' => 'music/index',
+                'music/<id:\d+>' => 'music/view',
+                'music/<id:\d+>/update' => 'music/update',
             ],
         ],
         
@@ -64,7 +67,7 @@ $config = [
         ],
         'admin' => [
             'class' => 'app\modules\admin\Module',
-            'defaultRoute' => 'application/index' //controller/action
+            
         ],
         
     ],

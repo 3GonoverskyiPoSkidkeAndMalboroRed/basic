@@ -1,3 +1,24 @@
+body {
+
+    background-color: #000000; /* Черный цвет фона */
+    color: #ffffff; /* Белый цвет текста для контраста */
+}
+
+.main-background {
+
+}
+
+
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.col-md-4, .col-md-6, .col-md-12 {
+    padding: 0;
+}
+
 main > .container {
     padding: 70px 15px 20px;
 }
