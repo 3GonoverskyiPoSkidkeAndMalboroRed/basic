@@ -13,11 +13,11 @@ use yii\helpers\Url;
                 <?= Html::img('@web/uploads/' . $model->photos[0]->file_name, [
                     'alt' => $model->title,
                     'class' => 'img-thumbnail',
-                    'style' => 'width: 100%; height: 100%; object-fit: cover;'
+                    'style' => 'width: 100%; height: 100%; object-fit: cover; border-radius: 0;'
                 ]) ?>
             <?php endif; ?>
         </div>
-        <div style="padding: 7px">
+        <div style="padding: 7px; font-family: Impact;">
             <h5 style="margin: 10px 0;"><?= Html::encode($model->title) ?></h5>
             <p><?= Html::encode($model->item_name) ?></p>
             <p style="margin: 5px 0"><?= Html::encode($model->cost) ?> руб.</p>

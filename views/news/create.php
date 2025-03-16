@@ -7,26 +7,19 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\News */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->title = 'Добавить новость';
-$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Создать новость';
 ?>
-<div class="container-fluid" style="padding: 0;">
-    <h1><?= Html::encode($this->title) ?></h1>
+<h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="news-form">
+<div class="news-create">
+    <?php $form = ActiveForm::begin(); ?>
 
-        <?php $form = ActiveForm::begin(); ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
-        <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
-        <?= $form->field($model, 'image')->fileInput() ?>
-
-        <div class="form-group">
-            <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
-        </div>
-
-        <?php ActiveForm::end(); ?>
-
+    <div class="form-group">
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
-</div> 
+
+    <?php ActiveForm::end(); ?>
+</div>

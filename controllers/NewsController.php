@@ -6,19 +6,14 @@ use Yii;
 use app\models\News;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\data\ActiveDataProvider;
-use yii\web\UploadedFile;
 
 class NewsController extends Controller
 {
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => News::find(),
-        ]);
-
+        $newsItems = News::find()->all(); // Получаем все новости
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'newsItems' => $newsItems,
         ]);
     }
 
@@ -27,13 +22,8 @@ class NewsController extends Controller
         $model = new News();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->image = UploadedFile::getInstance($model, 'image');
-            if ($model->upload()) { // Загружаем изображение
-                if ($model->save()) { // Сохраняем новость
-                    return $this->redirect(['index']);
-                }
-            } else {
-                Yii::$app->session->setFlash('error', 'Ошибка загрузки изображения.');
+            if ($model->save()) {
+                return $this->redirect(['index']);
             }
         }
 
@@ -47,13 +37,8 @@ class NewsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->image = UploadedFile::getInstance($model, 'image');
-            if ($model->upload()) { // Загружаем изображение
-                if ($model->save()) { // Сохраняем новость
-                    return $this->redirect(['index']);
-                }
-            } else {
-                Yii::$app->session->setFlash('error', 'Ошибка загрузки изображения.');
+            if ($model->save()) {
+                return $this->redirect(['index']);
             }
         }
 

@@ -19,7 +19,7 @@ use app\models\Product; // Импортируем модель продукта
     <?php $form = ActiveForm::begin([
         'method' => 'get',
         'action' => ['store/index'],
-        'options' => ['class' => 'form-inline'], // Добавляем класс для горизонтального расположения
+        'options' => ['class' => 'form-inline'],
     ]); ?>
     
     <div class="form-group">
