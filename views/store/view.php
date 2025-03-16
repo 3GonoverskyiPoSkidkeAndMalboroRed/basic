@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-view" style="background-color: #000; color: #fff;">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="product-images" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0;">
                 <?php if ($model->photos): ?>
                     <?php foreach ($model->photos as $photo): ?>
