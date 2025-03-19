@@ -4,7 +4,21 @@ use yii\helpers\Html;
 /** @var app\models\Music $model */
 ?>
 
-<div class="music-card" style="background-color: #111; border: 1px solid #333; padding: 15px; border-radius: 10px; transition: all 0.3s ease;">
+<?= Html::beginTag('a', [
+    'href' => $model->youtube_link,
+    'target' => '_blank',
+    'style' => '
+        display: block;
+        text-decoration: none;
+        background-color: #111;
+        border: 1px solid #333;
+        padding: 15px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    ',
+    'onmouseover' => 'this.style.transform="scale(1.02)"; this.style.borderColor="rgb(160, 2, 2)";',
+    'onmouseout' => 'this.style.transform="scale(1)"; this.style.borderColor="#333";',
+]) ?>
     <h3 style="color: white; font-family: Impact; margin-bottom: 15px;">
         <?= Html::encode($model->title) ?>
     </h3>
@@ -15,8 +29,6 @@ use yii\helpers\Html;
                  alt="<?= Html::encode($model->title) ?>" 
                  style="width: 100%; height: auto; border-radius: 5px;"
             >
-
-            </div>
         <?php else: ?>
             <div style="
                 width: 100%;
@@ -33,24 +45,13 @@ use yii\helpers\Html;
             </div>
         <?php endif; ?>
     </div>
-    
-    <div class="youtube-link" style="margin-top: 10px;">
-        <?= Html::a(
-            'Смотреть на YouTube',
-            $model->youtube_link,
-            [
-                'class' => 'btn btn-danger',
-                'target' => '_blank',
-                'style' => 'width: 100%; font-family: Impact;'
-            ]
-        ) ?>
-    </div>
 
     <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin): ?>
-        <div class="admin-buttons" style="margin-top: 10px; display: flex; gap: 10px;">
+        <div class="admin-buttons" style="margin-top: 10px; display: flex; gap: 10px;" onclick="event.stopPropagation();">
             <?= Html::a('Изменить', ['update', 'id' => $model->id], [
                 'class' => 'btn btn-primary',
-                'style' => 'flex: 1; font-family: Impact;'
+                'style' => 'flex: 1; font-family: Impact;',
+                'onclick' => 'event.preventDefault(); window.location.href=this.href;'
             ]) ?>
             <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
@@ -59,7 +60,8 @@ use yii\helpers\Html;
                     'confirm' => 'Вы уверены, что хотите удалить этот элемент?',
                     'method' => 'post',
                 ],
+                'onclick' => 'event.preventDefault(); if(confirm("Вы уверены, что хотите удалить этот элемент?")) window.location.href=this.href;'
             ]) ?>
         </div>
     <?php endif; ?>
-</div>
+<?= Html::endTag('a') ?>
