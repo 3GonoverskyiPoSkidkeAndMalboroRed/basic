@@ -10,8 +10,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Music', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="music-update" style="background-color: #111; padding: 20px; border-radius: 10px;">
-    <h1 style="color: white; font-family: Impact; margin-bottom: 30px;"><?= Html::encode($this->title) ?></h1>
+<div class="music-update">
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin(); ?>
 

@@ -9,8 +9,8 @@ use yii\bootstrap5\ActiveForm;
 $this->title = 'Добавить музыку';
 ?>
 
-<div class="music-create" style="background-color: #111; padding: 20px; border-radius: 10px;">
-    <h1 style="color: white; font-family: Impact; margin-bottom: 30px;"><?= Html::encode($this->title) ?></h1>
+<div class="music-create">
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin(); ?>
 

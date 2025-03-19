@@ -12,7 +12,7 @@ $this->title = 'Музыка';
     <h1 class="music-title"><?= Html::encode($this->title) ?></h1>
 
     <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin): ?>
-        <div style="margin-bottom: 20px;">
+        <div class="mb-3">
             <?= Html::a('Добавить музыку', ['create'], [
                 'class' => 'btn btn-success',
                 'style' => 'font-family: Impact;'

@@ -26,10 +26,6 @@ use yii\helpers\Html;
 
     <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin): ?>
         <div class="admin-buttons" onclick="event.stopPropagation();">
-            <?= Html::a('Изменить', ['update', 'id' => $model->id], [
-                'class' => 'btn btn-primary admin-button',
-                'onclick' => 'event.preventDefault(); window.location.href=this.href;'
-            ]) ?>
             <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger admin-button',
                 'data' => [
