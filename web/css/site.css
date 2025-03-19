@@ -1,5 +1,4 @@
 body {
-
     background-color: #000000; /* Черный цвет фона */
     color: #ffffff; /* Белый цвет текста для контраста */
 }
@@ -7,8 +6,6 @@ body {
 .main-background {
 
 }
-
-
 
 .row {
     margin-left: 0;
@@ -106,4 +103,95 @@ a.desc:after {
 
 .form-group {
     margin-bottom: 1rem;
+}
+
+/* Стили для каталога */
+.catalog-item {
+    background-color: #111;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    
+}
+
+.catalog-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgb(160, 2, 2);
+    border-color: rgb(160, 2, 2);
+}
+
+.catalog-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.catalog-image-container {
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.catalog-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.catalog-item:hover .catalog-image {
+    transform: scale(1.05);
+}
+
+.catalog-no-image {
+    width: 100%;
+    height: 200px;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.catalog-no-image p {
+    color: #666;
+    margin: 0;
+}
+
+.catalog-info {
+    color: white;
+    font-family: Impact;
+}
+
+.catalog-title {
+    color: white;
+    font-family: Impact;
+    margin: 0 0 10px 0;
+}
+
+.catalog-item:hover .catalog-title {
+    color: rgb(160, 2, 2);
+}
+
+.catalog-details {
+    display: grid;
+    gap: 5px;
+}
+
+.catalog-detail-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.catalog-item-name,
+.catalog-size,
+.catalog-category {
+    color: white;
+    font-family: Impact;
+}
+
+.catalog-price {
+    color: rgb(160, 2, 2);
+    font-family: Impact;
+    font-size: 1.2em;
 }
