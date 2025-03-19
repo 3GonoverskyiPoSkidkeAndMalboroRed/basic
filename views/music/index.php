@@ -8,10 +8,8 @@ use yii\widgets\ListView;
 $this->title = 'Музыка';
 ?>
 
-<div class="music-index" style="background-color: #000; color: #fff; padding: 20px;">
-    <h1 style="color: white; font-family: Impact; text-align: center; margin-bottom: 30px;">
-        <?= Html::encode($this->title) ?>
-    </h1>
+<div class="music-index">
+    <h1 class="music-title"><?= Html::encode($this->title) ?></h1>
 
     <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin): ?>
         <div style="margin-bottom: 20px;">

@@ -271,3 +271,104 @@ a.desc:after {
 .form-group {
     margin-bottom: 0;
 }
+
+/* Стили для страницы музыки */
+.music-index {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+}
+
+.music-title {
+    color: white;
+    font-family: Impact;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.music-grid {
+    display: grid;
+    gap: 20px;
+    padding: 0 15px;
+}
+
+.music-card {
+    display: block;
+    text-decoration: none;
+    background-color: #111;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.music-card:hover {
+    transform: scale(1.02);
+    border-color: rgb(160, 2, 2);
+}
+
+.youtube-thumbnail {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.youtube-thumbnail img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.youtube-thumbnail .no-image {
+    width: 100%;
+    height: 200px;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #666;
+    font-family: Impact;
+}
+
+.music-title-text {
+    color: white;
+    font-family: Impact;
+    margin-top: 15px;
+    font-size: 1em;
+}
+
+.admin-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.admin-button {
+    flex: 1;
+    font-family: Impact;
+}
+
+/* Адаптивная верстка */
+@media (max-width: 576px) {
+    .music-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .music-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .music-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 993px) {
+    .music-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
