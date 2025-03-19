@@ -38,39 +38,51 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-black fixed-top']
     ]);
+
+    // Левое меню
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
+        'options' => ['class' => 'navbar-nav me-auto'],
         'items' => [  
             ['label' => '<span style="font-family: Impact; font-size: 1.2em;">Каталог</span>', 'url' => ['/store/index'], 'encode' => false],
             
             Yii::$app->user->isGuest
-                ? ['label' => '<span style="font-family: Impact;; font-size: 1.2em">Регистрация</span>', 'url' => ['/site/register'], 'encode' => false]
+                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Регистрация</span>', 'url' => ['/site/register'], 'encode' => false]
                 : '',
 
-            !Yii::$app->user->isGuest
-                ? ['label' => '<span style="font-family: Impact;; font-size: 1.2em">Корзина</span>', 'url' => ['/cart/index'], 'encode' => false]
-                : ['label' => '<span style="font-family: Impact;; font-size: 1.2em">Корзина</span>', 'url' => ['/cart/index'], 'encode' => false],
 
-            !Yii::$app->user->isGuest && !Yii::$app->user->identity->isAdmin
-                ? ['label' => '<span style="font-family: Impact;; font-size: 1.2em">Мои заказы</span>', 'url' => ['/user/orders'], 'encode' => false]
-                : '',
 
             !Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin
-                ? ['label' => '<span style="font-family: Impact;; font-size: 1.2em">Админка</span>', 'url' => ['/admin'], 'encode' => false]
+                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Админка</span>', 'url' => ['/admin'], 'encode' => false]
                 : '',
+        ]
+    ]);
 
+    // Правое меню (корзина и вход/выход)
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav ms-auto'],
+        'items' => [
+            !Yii::$app->user->isGuest
+                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Корзина</span>', 'url' => ['/cart/index'], 'encode' => false]
+                : ['label' => '<span style="font-family: Impact; font-size: 1.2em">Корзина</span>', 'url' => ['/cart/index'], 'encode' => false],
+
+
+                !Yii::$app->user->isGuest && !Yii::$app->user->identity->isAdmin
+                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Мои заказы</span>', 'url' => ['/user/orders'], 'encode' => false]
+                : '',
+                
             Yii::$app->user->isGuest
-                ? ['label' => '<span style="font-family: Impact;; font-size: 1.2em">Вход</span>', 'url' => ['/site/login'], 'encode' => false]
+                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Вход</span>', 'url' => ['/site/login'], 'encode' => false]
                 : '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
-                        '<span style="font-family: Impact;; font-size: 1.2em">Выход (' . Yii::$app->user->identity->login . ')</span>',
+                        '<span style="font-family: Impact; font-size: 1.2em">Выход (' . Yii::$app->user->identity->login . ')</span>',
                         ['class' => 'nav-link btn btn-link logout', 'encode' => false]
                     )
                     . Html::endForm()
                     . '</li>'
         ]
     ]);
+
     NavBar::end();
     ?>
 </header>
