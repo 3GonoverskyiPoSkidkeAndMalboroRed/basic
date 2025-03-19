@@ -17,7 +17,7 @@ $this->title = 'Мои заказы';
                     <?php if ($order->product && $order->product->photos): ?>
                         <?= Html::img('@web/uploads/' . $order->product->photos[0]->file_name, [
                             'alt' => $order->product->title,
-                            'style' => 'width: 100%; height: 200px; object-fit: cover; border-radius: 5px;'
+                            'style' => 'width: 100%; height: auto; border-radius: 5px;'
                         ]) ?>
                     <?php else: ?>
                         <div style="width: 100%; height: 200px; background-color: #222; display: flex; align-items: center; justify-content: center; border-radius: 5px;">
@@ -30,7 +30,9 @@ $this->title = 'Мои заказы';
                     <h3 style="color: white; font-family: Impact; margin: 0 0 10px 0;">
                         <?= Html::encode($order->product->title) ?>
                     </h3>
-
+                    <p style="color: white; font-family: Impact; margin: 0 0 10px 0;">
+                        <?= Html::encode($order->product->item_name) ?>
+                    </p>
                     <div class="order-details" style="display: grid; gap: 5px;">
                         <div style="display: flex; justify-content: space-between;">
                             <span style="color: #888;">Статус:</span>
