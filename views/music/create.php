@@ -1,23 +1,20 @@
 <?php
+
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var app\models\Music $model */
 
-$this->title = 'Обновить музыку: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Music', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Добавить музыку';
 ?>
 
-<div class="music-update" style="background-color: #111; padding: 20px; border-radius: 10px;">
+<div class="music-create" style="background-color: #111; padding: 20px; border-radius: 10px;">
     <h1 style="color: white; font-family: Impact; margin-bottom: 30px;"><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true])->label('Название', ['class' => 'text-white']) ?>
-    <?= $form->field($model, 'artist')->textInput(['maxlength' => true])->label('Исполнитель', ['class' => 'text-white']) ?>
-    <?= $form->field($model, 'album')->textInput(['maxlength' => true])->label('Альбом', ['class' => 'text-white']) ?>
     <?= $form->field($model, 'youtube_link')->textInput(['maxlength' => true])->label('Ссылка на YouTube', ['class' => 'text-white']) ?>
 
     <div class="form-group">

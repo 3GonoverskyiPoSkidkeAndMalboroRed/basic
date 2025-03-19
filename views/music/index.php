@@ -13,6 +13,15 @@ $this->title = 'Музыка';
         <?= Html::encode($this->title) ?>
     </h1>
 
+    <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin): ?>
+        <div style="margin-bottom: 20px;">
+            <?= Html::a('Добавить музыку', ['create'], [
+                'class' => 'btn btn-success',
+                'style' => 'font-family: Impact;'
+            ]) ?>
+        </div>
+    <?php endif; ?>
+
     <div class="music-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
         <?= ListView::widget([
             'dataProvider' => $dataProvider,

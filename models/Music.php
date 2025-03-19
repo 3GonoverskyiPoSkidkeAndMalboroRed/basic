@@ -29,4 +29,17 @@ class Music extends ActiveRecord
             'youtube_link' => 'Ссылка на YouTube',
         ];
     }
+
+    public function getYoutubeId()
+    {
+        $url = $this->youtube_link;
+        preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $url, $matches);
+        return isset($matches[1]) ? $matches[1] : null;
+    }
+
+    public function getYoutubeThumbnail()
+    {
+        $youtubeId = $this->getYoutubeId();
+        return $youtubeId ? "https://img.youtube.com/vi/{$youtubeId}/maxresdefault.jpg" : null;
+    }
 } 
