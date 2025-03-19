@@ -1,20 +1,32 @@
+<?php
+
 namespace app\models;
 
-use Yii;
 use yii\db\ActiveRecord;
 
 class Music extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'music'; // Укажите имя таблицы в базе данных
+        return 'music';
     }
 
     public function rules()
     {
         return [
-            [['title', 'artist', 'album'], 'required'],
-            [['title', 'artist', 'album'], 'string', 'max' => 255],
+            [['title', 'youtube_link'], 'required'],
+            [['title'], 'string', 'max' => 255],
+            [['youtube_link'], 'string', 'max' => 255],
+            [['youtube_link'], 'url'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'title' => 'Название',
+            'youtube_link' => 'Ссылка на YouTube',
         ];
     }
 } 

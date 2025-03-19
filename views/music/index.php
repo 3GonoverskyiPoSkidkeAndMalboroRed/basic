@@ -1,22 +1,24 @@
 <?php
 use yii\helpers\Html;
+use yii\widgets\ListView;
 
-/* @var $this yii\web\View */
-/* @var $musicList app\models\Music[] */
+/** @var yii\web\View $this */
+/** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Music';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Музыка';
 ?>
-<div class="music-background">
-    <div class="music-index">
-        <h1><?= Html::encode($this->title) ?></h1>
 
-        <ul>
-            <?php foreach ($musicList as $music): ?>
-                <li>
-                    <?= Html::a(Html::encode($music->title), ['view', 'id' => $music->id]) ?> - <?= Html::encode($music->artist) ?>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+<div class="music-index" style="background-color: #000; color: #fff; padding: 20px;">
+    <h1 style="color: white; font-family: Impact; text-align: center; margin-bottom: 30px;">
+        <?= Html::encode($this->title) ?>
+    </h1>
+
+    <div class="music-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+        <?= ListView::widget([
+            'dataProvider' => $dataProvider,
+            'itemView' => '_item',
+            'layout' => "{items}\n{pager}",
+            'itemOptions' => ['class' => 'music-item'],
+        ]) ?>
     </div>
 </div> 

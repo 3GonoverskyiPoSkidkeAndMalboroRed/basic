@@ -1,27 +1,33 @@
+<?php
+
 namespace app\controllers;
 
 use Yii;
 use app\models\Music;
 use yii\web\Controller;
+use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 
 class MusicController extends Controller
 {
     public function actionIndex()
     {
-        $musicList = Music::find()->all(); // Получаем все записи музыки
+        $dataProvider = new ActiveDataProvider([
+            'query' => Music::find(),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
 
         return $this->render('index', [
-            'musicList' => $musicList,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     public function actionView($id)
     {
-        $music = $this->findModel($id);
-
         return $this->render('view', [
-            'music' => $music,
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -44,6 +50,6 @@ class MusicController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('Запрашиваемая страница не существует.');
     }
 } 

@@ -44,6 +44,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav me-auto'],
         'items' => [  
             ['label' => '<span style="font-family: Impact; font-size: 1.2em;">Каталог</span>', 'url' => ['/store/index'], 'encode' => false],
+            ['label' => '<span style="font-family: Impact; font-size: 1.2em;">Музыка</span>', 'url' => ['/music/index'], 'encode' => false],
             
             Yii::$app->user->isGuest
                 ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Регистрация</span>', 'url' => ['/site/register'], 'encode' => false]
