@@ -43,8 +43,8 @@ $newProducts = Product::find()->with('photos')->limit(3)->all(); // Получа
             <?php foreach ($newsItems as $news): ?>
                 <div class="col-md-4 mb-4">
                     <div class="news-item" style="margin-bottom: 20px;">
-                        <h5 style="color: white;"><?= Html::encode($news->title) ?></h5>
-                        <p style="color: white;"><?= Html::encode($news->content) ?></p>
+                        <h5 style="color: white; text-align: center;"><?= Html::encode($news->title) ?></h5>
+                        <p style="color: white; text-align: center;"><?= Html::encode($news->content) ?></p>
                         <?php if ($news->image_path): ?>
                             <?= Html::img('@web/uploads/' . $news->image_path, [
                                 'alt' => $news->title,
