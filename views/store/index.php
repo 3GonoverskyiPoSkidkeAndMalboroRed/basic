@@ -14,20 +14,36 @@ use app\models\Product; // Импортируем модель продукта
 
 ?>
 <div class="container">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="catalog-title"><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([
         'method' => 'get',
         'action' => ['store/index'],
-        'options' => ['class' => 'form-inline'],
+        'options' => ['class' => 'catalog-filter', 'id' => 'catalog-filter-form'],
     ]); ?>
     
-    <div class="form-group">
-        <?= $form->field($searchModel, 'size')->dropDownList(Product::$sizes, ['prompt' => 'Выберите размер']) ?>
-    </div>
-    
-    <div class="form-group">
-        <?= $form->field($searchModel, 'category_id')->dropDownList(Category::getCategories(), ['prompt' => 'Выберите категорию']) ?>
+    <div class="filter-container">
+        <div class="filter-group">
+            <?= $form->field($searchModel, 'size')->dropDownList(
+                Product::$sizes, 
+                [
+                    'prompt' => 'Выберите размер',
+                    'class' => 'filter-select',
+                    'onchange' => 'this.form.submit()'
+                ]
+            ) ?>
+        </div>
+        
+        <div class="filter-group">
+            <?= $form->field($searchModel, 'category_id')->dropDownList(
+                Category::getCategories(), 
+                [
+                    'prompt' => 'Выберите категорию',
+                    'class' => 'filter-select',
+                    'onchange' => 'this.form.submit()'
+                ]
+            ) ?>
+        </div>
     </div>
     
     <?php ActiveForm::end(); ?>

@@ -195,3 +195,79 @@ a.desc:after {
     font-family: Impact;
     font-size: 1.2em;
 }
+
+/* Стили для фильтров в каталоге */
+.catalog-filter {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #333;
+}
+
+.filter-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    color: white;
+    font-family: Impact;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 10px;
+    background-color: #222;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 5px;
+    font-family: Impact;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-select:hover {
+    border-color: rgb(160, 2, 2);
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: rgb(160, 2, 2);
+    box-shadow: 0 0 5px rgba(160, 2, 2, 0.5);
+}
+
+.filter-select option {
+    background-color: #222;
+    color: white;
+    font-family: Impact;
+    padding: 10px;
+}
+
+.catalog-title {
+    color: white;
+    font-family: Impact;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Убираем стандартные стили формы Yii2 */
+.has-error .help-block {
+    color: rgb(160, 2, 2);
+    font-family: Impact;
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
