@@ -19,16 +19,18 @@ use yii\helpers\Html;
     'onmouseover' => 'this.style.transform="scale(1.02)"; this.style.borderColor="rgb(160, 2, 2)";',
     'onmouseout' => 'this.style.transform="scale(1)"; this.style.borderColor="#333";',
 ]) ?>
-    <h3 style="color: white; font-family: Impact; margin-bottom: 15px;">
-        <?= Html::encode($model->title) ?>
-    </h3>
+
     
     <div class="youtube-thumbnail" style="margin-bottom: 15px; position: relative;">
         <?php if ($model->getYoutubeThumbnail()): ?>
             <img src="<?= $model->getYoutubeThumbnail() ?>" 
                  alt="<?= Html::encode($model->title) ?>" 
                  style="width: 100%; height: auto; border-radius: 5px;"
+                 
             >
+            <p style="color: white; font-family: Impact; margin-top: 15px; font-size: 1;">
+        <?= Html::encode($model->title) ?>
+        </p>
         <?php else: ?>
             <div style="
                 width: 100%;
