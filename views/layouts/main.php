@@ -24,6 +24,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
     <title><?= Html::encode($this->title) ?></title>
+    <link href="/css/site.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100 ">
@@ -36,51 +38,52 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-black fixed-top']
     ]);
+
+    // Левое меню
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
+        'options' => ['class' => 'navbar-nav me-auto'],
         'items' => [  
-            
-            ['label' => 'Каталог', 'url' => ['/store/index']],
-
-
-            
+            ['label' => '<span style="font-family: Impact; font-size: 1.2em;">Каталог</span>', 'url' => ['/store/index'], 'encode' => false],
+            ['label' => '<span style="font-family: Impact; font-size: 1.2em;">Музыка</span>', 'url' => ['/music/index'], 'encode' => false],
             
             Yii::$app->user->isGuest
-                ? ['label' => 'Регистрация', 'url' => ['/site/register']]
+                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Регистрация</span>', 'url' => ['/site/register'], 'encode' => false]
                 : '',
 
 
 
+            !Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin
+                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Админка</span>', 'url' => ['/admin'], 'encode' => false]
+                : '',
+        ]
+    ]);
 
+    // Правое меню (корзина и вход/выход)
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav ms-auto'],
+        'items' => [
             !Yii::$app->user->isGuest
-                ? ['label' => 'Корзина', 'url' => ['/cart/index']]
-                : ['label' => 'Корзина', 'url' => ['/cart/index']],
+                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Корзина</span>', 'url' => ['/cart/index'], 'encode' => false]
+                : ['label' => '<span style="font-family: Impact; font-size: 1.2em">Корзина</span>', 'url' => ['/cart/index'], 'encode' => false],
 
-            Yii::$app->user->isGuest && Yii::$app->user->identity && !Yii::$app->user->identity->isAdmin
-            ?['label' => 'Magazine', 'url' => ['/magazine/index']]
-            : '',
 
-            !Yii::$app->user->isGuest && !Yii::$app->user->identity->isAdmin
-                ? ['label' => 'Мои заказы', 'url' => ['/user/orders']]
+                !Yii::$app->user->isGuest && !Yii::$app->user->identity->isAdmin
+                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Мои заказы</span>', 'url' => ['/user/orders'], 'encode' => false]
                 : '',
-
-
-                !Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin
-                ? ['label' => 'Админка', 'url' => ['/admin']]
-                : '',
-
+                
             Yii::$app->user->isGuest
-                ? ['label' => 'Вход', 'url' => ['/site/login']]
+                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Вход</span>', 'url' => ['/site/login'], 'encode' => false]
                 : '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
-                        'Выход (' . Yii::$app->user->identity->login . ')',
-                        ['class' => 'nav-link btn btn-link logout']
+                        '<span style="font-family: Impact; font-size: 1.2em">Выход (' . Yii::$app->user->identity->login . ')</span>',
+                        ['class' => 'nav-link btn btn-link logout', 'encode' => false]
                     )
                     . Html::endForm()
                     . '</li>'
         ]
     ]);
+
     NavBar::end();
     ?>
 </header>
@@ -95,11 +98,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </div>
 </main>
 
-<footer id="footer" class="mt-auto py-3 bg-light">
+<footer id="footer" class="mt-auto py-3 bg-black border-top border-white ">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
+            <div class="col-md-6 text-center  text-white">&copy; My Company <?= date('Y') ?></div>
+            <div class="col-md-6 text-center  text-white"><?= Yii::powered() ?></div>
         </div>
     </div>
 </footer>

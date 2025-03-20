@@ -13,6 +13,9 @@ class StoreController extends Controller
     {
         $searchModel = new \app\modules\admin\models\ProductSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        
+        // Добавляем условие для отображения только товаров с count > 0
+        $dataProvider->query->andWhere(['>', 'count', 0]);
 
         // Получаем категории с названиями
         $categories = Category::find()->select(['id', 'title'])->indexBy('id')->column();
@@ -27,8 +30,8 @@ class StoreController extends Controller
     public function actionView($id)
     {
         $model = Product::findOne($id);
-        if ($model === null) {
-            throw new \yii\web\NotFoundHttpException('Товар не найден.');
+        if ($model === null || $model->count <= 0) { // Добавляем проверку на количество
+            throw new \yii\web\NotFoundHttpException('Товар не найден или недоступен.');
         }
 
         return $this->render('view', [

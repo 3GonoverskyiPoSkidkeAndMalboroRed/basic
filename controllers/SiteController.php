@@ -80,7 +80,12 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             Yii::$app->session->setFlash('success', 'Пользователь успешно авторизован!');
-            return $this->redirect('/account');
+            // Проверяем, является ли пользователь администратором
+            if (Yii::$app->user->identity->isAdmin) {
+                return $this->redirect('/admin'); // Перенаправление для администраторов
+            } else {
+                return $this->redirect('/user/orders'); // Перенаправление для обычных пользователей
+            } 
         }
 
         $model->password = '';
@@ -89,11 +94,8 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * Logout action.
-     *
-     * @return Response
-     */
+
+    
     public function actionLogout()
     {
         Yii::$app->user->logout();
@@ -102,11 +104,8 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
+
+    
     public function actionContact()
     {
         $model = new ContactForm();
@@ -120,11 +119,8 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
+
+    
     public function actionAbout()
     {
         return $this->render('about');
@@ -134,21 +130,14 @@ class SiteController extends Controller
     {
         $model = new \app\models\RegisterForm();
         if ($model->load(Yii::$app->request->post())) {
-            
-            // $user = $model->userRegister();
-            // if ($user) {
-            //     Yii::debug($user->attributes);
-            // }
 
-            
             if ($user = $model->userRegister()) {
                 Yii::$app->user->login($user);
                 Yii::$app->session->setFlash('success', 'Пользователь успешно зарегистрирован!');
                 return $this->redirect('/account');
-                // Yii::debug($user->attributes);
             }
             
         }
-        return $this->render('register', ['model' => $model,]);
+        return $this->render('register', ['model' => $model]);
     }
 }

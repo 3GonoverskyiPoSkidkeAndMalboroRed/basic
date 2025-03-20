@@ -39,14 +39,23 @@ $newProducts = Product::find()->with('photos')->limit(3)->all(); // Получа
 
         <h2 style="text-align: center;">Новости</h2>
         <div class="row">
-            <?php $news = News::find()->limit(3)->all(); ?>
-            <?php foreach ($news as $item): ?>
-                <div class="col-md-4">
-                    <div class="news-item" style="margin-bottom: 20px; border: 1px solid black; border-radius: 0;">
-                        <h5><?= Html::encode($item->title) ?></h5>
-                        <p><?= Html::encode($item->content) ?></p>
+            <?php $newsItems = News::find()->limit(3)->all(); // Получаем последние 3 новости ?>
+            <?php foreach ($newsItems as $news): ?>
+                <div class="col-md-4 mb-4">
+                    <div class="news-item" style="margin-bottom: 20px;">
+                        <h5 style="color: white; text-align: center;"><?= Html::encode($news->title) ?></h5>
+                        <p style="color: white; text-align: center;"><?= Html::encode($news->content) ?></p>
+                        <?php if ($news->image_path): ?>
+                            <?= Html::img('@web/uploads/' . $news->image_path, [
+                                'alt' => $news->title,
+                                'class' => 'img-fluid',
+                                'style' => 'width: 100%; height: auto; object-fit: cover; border-radius: 0;'
+                            ]) ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>
+        </div>
+
 </div>
 

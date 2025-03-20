@@ -60,7 +60,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'category_id', 'item_name'], 'required'],
-            [['count', 'cost', 'category_id'], 'integer'],
+            [['count', 'cost', 'category_id', 'status'], 'integer'],
             [['title', 'item_name'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 1000],
             [['size'], 'string', 'max' => 255],
@@ -77,10 +77,14 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'count' => 'Count',
-            'cost' => 'Cost',
-            'category_id' => 'Category ID',
+            'item_name' => 'Название',
+            'description' => 'Описание',
+            'title' => 'Название',
+            'count' => 'Количество',
+            'cost' => 'Цена',
+            'size' => 'Размер',
+            'image' => 'Изображение',
+            'category_id' => 'Категория',
         ];
     }
 

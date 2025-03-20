@@ -1,5 +1,4 @@
 body {
-
     background-color: #000000; /* Черный цвет фона */
     color: #ffffff; /* Белый цвет текста для контраста */
 }
@@ -7,8 +6,6 @@ body {
 .main-background {
 
 }
-
-
 
 .row {
     margin-left: 0;
@@ -24,9 +21,9 @@ main > .container {
 }
 
 .footer {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     font-size: .9em;
-    height: 60px;
+    height: 10px;
 }
 
 .footer > .container {
@@ -106,4 +103,272 @@ a.desc:after {
 
 .form-group {
     margin-bottom: 1rem;
+}
+
+/* Стили для каталога */
+.catalog-item {
+    background-color: #111;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    
+}
+
+.catalog-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgb(160, 2, 2);
+    border-color: rgb(160, 2, 2);
+}
+
+.catalog-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.catalog-image-container {
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.catalog-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.catalog-item:hover .catalog-image {
+    transform: scale(1.05);
+}
+
+.catalog-no-image {
+    width: 100%;
+    height: 200px;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.catalog-no-image p {
+    color: #666;
+    margin: 0;
+}
+
+.catalog-info {
+    color: white;
+    font-family: Impact;
+}
+
+.catalog-title {
+    color: white;
+    font-family: Impact;
+    margin: 0 0 10px 0;
+}
+
+.catalog-item:hover .catalog-title {
+    color: rgb(160, 2, 2);
+}
+
+.catalog-details {
+    display: grid;
+    gap: 5px;
+}
+
+.catalog-detail-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.catalog-item-name,
+.catalog-size,
+.catalog-category {
+    color: white;
+    font-family: Impact;
+}
+
+.catalog-price {
+    color: rgb(160, 2, 2);
+    font-family: Impact;
+    font-size: 1.2em;
+}
+
+/* Стили для фильтров в каталоге */
+.catalog-filter {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #333;
+}
+
+.filter-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    color: white;
+    font-family: Impact;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 10px;
+    background-color: #222;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 5px;
+    font-family: Impact;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-select:hover {
+    border-color: rgb(160, 2, 2);
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: rgb(160, 2, 2);
+    box-shadow: 0 0 5px rgba(160, 2, 2, 0.5);
+}
+
+.filter-select option {
+    background-color: #222;
+    color: white;
+    font-family: Impact;
+    padding: 10px;
+}
+
+.catalog-title {
+    color: white;
+    font-family: Impact;
+    font-size: 1.8em;
+    margin-bottom:5px;
+    text-align: left;
+}
+
+/* Убираем стандартные стили формы Yii2 */
+.has-error .help-block {
+    color: rgb(160, 2, 2);
+    font-family: Impact;
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+/* Стили для страницы музыки */
+.music-index {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+}
+
+.music-title {
+    color: white;
+    font-family: Impact;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.music-grid {
+    display: grid;
+    gap: 20px;
+    padding: 0 15px;
+}
+
+.music-card {
+    display: block;
+    text-decoration: none;
+    background-color: #111;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.music-card:hover {
+    transform: scale(1.02);
+    border-color: rgb(160, 2, 2);
+}
+
+.youtube-thumbnail {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.youtube-thumbnail img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.youtube-thumbnail .no-image {
+    width: 100%;
+    height: 200px;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #666;
+    font-family: Impact;
+}
+
+.music-title-text {
+    color: white;
+    font-family: Impact;
+    margin-top: 15px;
+    font-size: 1em;
+}
+
+.admin-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.admin-button {
+    flex: 1;
+    font-family: Impact;
+}
+
+/* Адаптивная верстка */
+@media (max-width: 576px) {
+    .music-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .music-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .music-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 993px) {
+    .music-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

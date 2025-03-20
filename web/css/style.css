@@ -9,6 +9,11 @@
     animation: main 1.5s ease 1;
 }
 
+
+table {
+    color: rgb(255, 0, 0);
+}
+
 @keyframes main {
     0% {
         opacity: 0;

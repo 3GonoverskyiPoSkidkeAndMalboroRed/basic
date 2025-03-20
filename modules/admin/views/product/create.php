@@ -2,6 +2,7 @@
 
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
+use app\models\Product;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
