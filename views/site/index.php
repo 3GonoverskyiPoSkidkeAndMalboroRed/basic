@@ -48,10 +48,10 @@ $newProducts = Product::find()->with('photos')->limit(3)->all(); // Получа
     <?php $newsItems = News::find()->limit(3)->all(); // Получаем последние 3 новости ?>
     <?php foreach ($newsItems as $news): ?>
         <div class="col-md-4 mb-4">
-            <div class="card h-100" ">
-                <div class="card-body" style="font-family: Impact;">
-                    <h5 class="card-title"><?= Html::encode($news->title) ?></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><?= Yii::$app->formatter->asDate($news->created_at, 'php:Y.m.d') ?></h6>
+            <div class="card h-100" style="background-color: transparent; border: none;">
+                <div class="card-body" style="font-family: Impact; color: white;">
+                    <h5 class="card-title" style="color: rgb(160, 22, 2);"><?= Html::encode($news->title) ?></h5>
+                    <h6 class="card-subtitle mb-2 text-white text-opacity-75 "><?= Yii::$app->formatter->asDate($news->created_at, 'php:Y.m.d') ?></h6>
                     <p class="card-text"><?= Html::encode($news->content) ?></p>
                 </div>
             </div>

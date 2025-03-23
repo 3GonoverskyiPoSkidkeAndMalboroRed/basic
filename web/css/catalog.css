@@ -1,12 +1,15 @@
 /* Стили для каталога */
 .catalog-item {
-    background-color: #111;
-    border: 1px solid #333;
+    background-color: none;
+    border: 3px solid rgb(160, 2, 2);
     padding: 15px;
     border-radius: 10px;
     transition: all 0.3s ease;
     
 }
+
+
+
 
 .catalog-item:hover {
     transform: translateY(-5px);
