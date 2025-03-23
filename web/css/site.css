@@ -76,10 +76,23 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
+/* Стили для навигационной панели */
+.navbar-nav .nav-link {
+    color: white; /* Цвет текста по умолчанию */
+    font-family: Impact; /* Шрифт для текста */
+    font-size: 1.2em; /* Размер шрифта */
+    transition: color 0.3s ease; /* Плавный переход цвета */
+    
+}
+
+.navbar-nav .nav-link:hover {
+    color: red; /* Цвет текста при наведении */
+}
+
 /* align the logout "link" (button in form) of the navbar */
 .nav li > form > button.logout {
     padding-top: 7px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 0, 0, 0.5);
 }
 
 @media(max-width:767px) {
@@ -94,7 +107,7 @@ a.desc:after {
 .nav > li > form > button.logout:focus,
 .nav > li > form > button.logout:hover {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgb(255, 255, 255);
 }
 
 .nav > li > form > button.logout:focus {
