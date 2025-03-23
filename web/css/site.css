@@ -86,7 +86,7 @@ a.desc:after {
 }
 
 .navbar-nav .nav-link:hover {
-    color: red; /* Цвет текста при наведении */
+    color: rgb(160, 2, 2); /* Цвет текста при наведении */
 }
 
 /* align the logout "link" (button in form) of the navbar */
