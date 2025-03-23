@@ -13,7 +13,7 @@ use app\models\Product; // Импортируем модель продукта
 /** @var array $categories */
 
 ?>
-<div class="container">
+<div class="container mt-3">
     <h1 class="catalog-title"><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([
