@@ -23,6 +23,10 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/style.css',
         'css/music.css',
+        'css/news.css',
+        'css/new-arrivals.css',
+        'css/catalog.css',
+        'css/cart.css',
     ];
     public $js = [
     ];

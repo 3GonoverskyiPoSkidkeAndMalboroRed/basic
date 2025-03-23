@@ -55,19 +55,3 @@ use app\models\Product;
         </div>
     </a>
 </div>
-
-<style>
-.item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-    border-color: rgb(160, 2, 2);
-}
-
-.item:hover img {
-    transform: scale(1.05);
-}
-
-.item:hover .order-info h3 {
-    color: rgb(160, 2, 2) !important;
-}
-</style>

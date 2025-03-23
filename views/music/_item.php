@@ -4,11 +4,7 @@ use yii\helpers\Html;
 /** @var app\models\Music $model */
 ?>
 
-<?= Html::beginTag('a', [
-    'href' => $model->youtube_link,
-    'target' => '_blank',
-    'class' => 'music-card'
-]) ?>
+
     <div class="youtube-thumbnail">
         <?php if ($model->getYoutubeThumbnail()): ?>
             <img src="<?= $model->getYoutubeThumbnail() ?>" 

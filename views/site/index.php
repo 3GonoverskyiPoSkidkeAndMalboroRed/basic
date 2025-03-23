@@ -11,51 +11,50 @@ $newProducts = Product::find()->with('photos')->limit(3)->all(); // Получа
 
 ?>
 
-        <h1><?= Html::encode($this->title) ?></h1>
-        <h2 style="text-align: center;">Новые поступления</h2>
-        <div class="row">
-            <?php foreach ($newProducts as $product): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="product-item" style="margin-bottom: 20px;">
-                        <a href="<?= \yii\helpers\Url::to(['store/view', 'id' => $product->id]) ?>" style="text-decoration: none; color: inherit;">
-                            <div class="product-image" style="height: 100%; overflow: hidden;">
-                                <?php if ($product->photos): ?>
-                                    <?= Html::img('@web/uploads/' . $product->photos[0]->file_name, [
-                                        'alt' => $product->title,
-                                        'class' => 'img-fluid',
-                                        'style' => 'width: 100%; height: auto; object-fit: cover; border-radius: 0;'
-                                    ]) ?>
-                                <?php endif; ?>
-                            </div>
-                            <div style="padding: 7px;">
-                                <h5 style="margin: 10px 0; color: white;"><?= Html::encode($product->title) ?></h5>
-                                <p style="color: white;"><?= Html::encode($product->item_name) ?></p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
+<h1><?= Html::encode($this->title) ?></h1>
 
-        <h2 style="text-align: center;">Новости</h2>
-        <div class="row">
-            <?php $newsItems = News::find()->limit(3)->all(); // Получаем последние 3 новости ?>
-            <?php foreach ($newsItems as $news): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="news-item" style="margin-bottom: 20px;">
-                        <h5 style="color: white; text-align: center;"><?= Html::encode($news->title) ?></h5>
-                        <p style="color: white; text-align: center;"><?= Html::encode($news->content) ?></p>
-                        <?php if ($news->image_path): ?>
-                            <?= Html::img('@web/uploads/' . $news->image_path, [
-                                'alt' => $news->title,
-                                'class' => 'img-fluid',
-                                'style' => 'width: 100%; height: auto; object-fit: cover; border-radius: 0;'
-                            ]) ?>
-                        <?php endif; ?>
-                    </div>
+<div class="new-arrivals">
+    <h2 class="new-arrivals-title">НОВЫЕ ПОСТУПЛЕНИЯ</h2>
+    <div class="row">
+        <?php foreach ($newProducts as $product): ?>
+            <div class="col-md-4 mb-4">
+                <div class="product-item new-arrival-item">
+                    <a href="<?= \yii\helpers\Url::to(['store/view', 'id' => $product->id]) ?>" class="catalog-link">
+                        <div class="product-image">
+                            <?php if ($product->photos): ?>
+                                <?= Html::img('@web/uploads/' . $product->photos[0]->file_name, [
+                                    'alt' => $product->title,
+                                    'class' => 'img-fluid',
+                                ]) ?>
+                            <?php else: ?>
+                                <div class="catalog-no-image">
+                                    <p>Нет изображения</p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div style="padding: 7px;">
+                            <h5 class="product-title"><?= Html::encode($product->title) ?></h5>
+                            <p class="product-item-name"><?= Html::encode($product->item_name) ?></p>
+                        </div>
+                    </a>
                 </div>
-            <?php endforeach; ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<h2 class="news-container">Новости</h2>
+<div class="row">
+    <?php $newsItems = News::find()->limit(3)->all(); // Получаем последние 3 новости ?>
+    <?php foreach ($newsItems as $news): ?>
+        <div class="col-md-4 mb-4">
+            <div class="news-item">
+                <h5 class="news-title"><?= Html::encode($news->title) ?></h5>
+                <p class="news-content"><?= Html::encode($news->content) ?></p>
+            </div>
         </div>
+    <?php endforeach; ?>
+</div>
 
 </div>
 
