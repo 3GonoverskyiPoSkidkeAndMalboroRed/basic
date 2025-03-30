@@ -35,6 +35,27 @@ class CategoryController extends Controller
         ]);
     }
 
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Категория успешно обновлена.');
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+        Yii::$app->session->setFlash('success', 'Категория успешно удалена.');
+        return $this->redirect(['index']);
+    }
+
     protected function findModel($id)
     {
         if (($model = Category::findOne($id)) !== null) {

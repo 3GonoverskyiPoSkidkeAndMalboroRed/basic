@@ -17,8 +17,24 @@ $this->title = 'Категории';
     'dataProvider' => $dataProvider,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-        'id',
         'title',
-        ['class' => 'yii\grid\ActionColumn'],
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => '{update} {delete}',
+            'buttons' => [
+                'update' => function ($url, $model) {
+                    return Html::a('Редактировать', $url, ['class' => 'btn btn-primary']);
+                },
+                'delete' => function ($url, $model) {
+                    return Html::a('Удалить', $url, [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'confirm' => 'Вы уверены, что хотите удалить эту категорию?',
+                            'method' => 'post',
+                        ],
+                    ]);
+                },
+            ],
+        ],
     ],
 ]); ?> 
