@@ -20,6 +20,9 @@ $this->title = 'Панель администратора';
         <div class="col-md-4">
             <?= Html::a('Управление новостями', ['/news/index'], ['class' => 'btn btn-success btn-block']) ?>
         </div>
+        <div class="col-md-4">
+            <?= Html::a('Управление категориями', ['/admin/category/index'], ['class' => 'btn btn-warning btn-block']) ?>
+        </div>
     </div>
 </div>
 

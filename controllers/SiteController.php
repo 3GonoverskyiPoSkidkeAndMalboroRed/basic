@@ -79,7 +79,6 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            Yii::$app->session->setFlash('success', 'Пользователь успешно авторизован!');
             // Проверяем, является ли пользователь администратором
             if (Yii::$app->user->identity->isAdmin) {
                 return $this->redirect('/admin'); // Перенаправление для администраторов
@@ -100,7 +99,6 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        Yii::$app->session->setFlash('success', 'Вы успешно вышли из системы');
         return $this->goHome();
     }
 
@@ -110,7 +108,6 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
 
             return $this->refresh();
         }
@@ -133,7 +130,6 @@ class SiteController extends Controller
 
             if ($user = $model->userRegister()) {
                 Yii::$app->user->login($user);
-                Yii::$app->session->setFlash('success', 'Пользователь успешно зарегистрирован!');
                 return $this->redirect('/account');
             }
             
