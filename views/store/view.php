@@ -33,8 +33,7 @@ $this->title = $model->title;
             <p class="product-cost"><?= Html::encode($model->cost) ?> руб.</p>
 
             <p>
-                <?= Html::a('Добавить в корзину', ['cart/add', 'id' => $model->id], ['class' => 'btn btn-minimalist btn-lg']) ?>
-                <?= Html::a('Назад', ['index'], ['class' => 'btn btn-minimalist btn-lg']) ?>
+                <?= Html::a(Html::img('@web/img/cart.svg', ['alt' => 'Добавить в корзину', 'class' => 'img-fluid', 'style' => 'filter: brightness(0) invert(1);']), ['cart/add', 'id' => $model->id], ['class' => 'btn btn-minimalist btn-lg']) ?>
             </p>
         </div>
     </div>
