@@ -45,7 +45,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'items' => [  
             ['label' => '<span class="nav-link">Каталог</span>', 'url' => ['/store/index'], 'encode' => false],
             ['label' => '<span class="nav-link">Музыка</span>', 'url' => ['/music/index'], 'encode' => false],
-            
+            ['label' => '<span class="nav-link">О нас</span>', 'url' => ['/about/index'], 'encode' => false],   
             Yii::$app->user->isGuest
                 ? ['label' => '<span class="nav-link">Регистрация</span>', 'url' => ['/site/register'], 'encode' => false]
                 : '',
@@ -53,6 +53,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             !Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin
                 ? ['label' => '<span class="nav-link">Админка</span>', 'url' => ['/admin'], 'encode' => false]
                 : '',
+
+                
         ]
     ]);
 
@@ -77,7 +79,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         ['class' => 'nav-link btn btn-link logout', 'encode' => false]
                     )
                     . Html::endForm()
-                    . '</li>'
+                    . '</li>',
+
+            
+                
+                
         ]
     ]);
 
