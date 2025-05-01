@@ -104,8 +104,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <footer id="footer" class="mt-auto py-3 bg-black border-top border-white ">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center  text-white">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center  text-white"><?= Yii::powered() ?></div>
+            <div class="col-md-6 text-center text-white" style="font-family: Impact">&copy; Неверов Павел <?= date('Y') ?></div>
+            <div class="col-md-6 text-center text-white" style="font-family: Impact">Все права защищены</div>
         </div>
     </div>
 </footer>
