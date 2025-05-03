@@ -35,21 +35,21 @@ $this->title = 'Мои заказы';
                     </p>
                     <div class="order-details" style="display: grid; gap: 5px;">
                         <div style="display: flex; justify-content: space-between;">
-                            <span style="color: #888;">Статус:</span>
+                            <span style="color: #888; font-family: Impact;">Статус:</span>
                             <span style="color: white; font-family: Impact;">
                                 <?= Html::encode($order->status->title) ?>
                             </span>
                         </div>
 
                         <div style="display: flex; justify-content: space-between;">
-                            <span style="color: #888;">Дата заказа:</span>
+                            <span style="color: #888; font-family: Impact;">Дата заказа:</span>
                             <span style="color: white; font-family: Impact;">
                                 <?= Html::encode(Yii::$app->formatter->asDate($order->created_at, 'php:d.m.Y')) ?>
                             </span>
                         </div>
 
                         <div style="display: flex; justify-content: space-between;">
-                            <span style="color: #888;">Время заказа:</span>
+                            <span style="color: #888; font-family: Impact;">Время заказа:</span>
                             <span style="color: white; font-family: Impact;">
                                 <?= Html::encode(Yii::$app->formatter->asTime($order->created_at, 'php:H:i')) ?>
                             </span>
@@ -59,4 +59,4 @@ $this->title = 'Мои заказы';
             </div>
         <?php endforeach; ?>
     </div>
-</div> 
+</div>                                                                          
