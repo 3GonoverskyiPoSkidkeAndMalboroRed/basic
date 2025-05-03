@@ -69,6 +69,7 @@ class CartController extends Controller
                             $product->status = 0; // Скрываем товар, если его количество 0
                         }
                         $product->save();
+                  
                     } else {
                         Yii::$app->session->setFlash('error', 'Ошибка при сохранении заказа.');
                         return $this->redirect(['index']);
@@ -81,7 +82,7 @@ class CartController extends Controller
 
             Cart::clearCart(); // Очищаем корзину после оформления заказа
             Yii::$app->session->setFlash('success', 'С вами свяжутся для оформления заказа.');
-            return $this->redirect(['cart/index']); // Перенаправляем на страницу корзины
+            return $this->redirect(['user/orders']); // Перенаправляем на страницу корзины
         }
 
         return $this->render('checkout', [
