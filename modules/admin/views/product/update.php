@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Product;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 
@@ -9,8 +10,7 @@ use yii\bootstrap5\ActiveForm;
 /* @var $categories array */
 
 $this->title = 'Обновить товар: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Товары', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 
