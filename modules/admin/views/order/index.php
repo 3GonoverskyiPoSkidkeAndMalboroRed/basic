@@ -15,14 +15,34 @@ $this->title = 'Заказы';
     'summary' => '',
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-        'id',
-        'product.title',
-        'status.title',
-        'created_at',
-        'user.full_name',
+        [
+            'attribute' => 'id',
+            'label' => 'ID Заказа',
+        ],
+        [
+            'attribute' => 'product.title',
+            'label' => 'Название товара',
+        ],
+        [
+            'attribute' => 'status.title',
+            'label' => 'Статус',
+        ],
+        [
+            'attribute' => 'created_at',
+            'label' => 'Дата создания',
+        ],
+        [
+            'attribute' => 'user.full_name',
+            'label' => 'Пользователь',
+        ],
+        [
+            'attribute' => 'contact_number',
+            'label' => 'Номер телефона',
+        ],
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{work} {reject} {complete}',
+            'header' => 'Изменить статус',
             'buttons' => [
                 'work' => function ($url, $model) {
                     if ($model->status_id == 1) { // Статус "Новая"
