@@ -16,6 +16,9 @@ $user = Yii::$app->user->identity;
         max-width: 600px; /* Максимальная ширина формы */
         margin: auto; /* Центрирование формы */
         padding: 20px; /* Отступы внутри формы */
+        border: 1px solid #ccc; /* Рамка вокруг формы */
+        border-radius: 8px; /* Закругленные углы */
+        background-color: #f9f9f9; /* Цвет фона формы */
     }
 
     .feedback-create h1 {
@@ -47,13 +50,15 @@ $user = Yii::$app->user->identity;
     /* Адаптивные стили */
     @media (max-width: 768px) {
         .feedback-create {
-            padding: 10px; /* Уменьшаем отступы на мобильных устройствах */
+            padding: 15px; /* Уменьшаем отступы на мобильных устройствах */
         }
+
         .feedback-create h1 {
-            font-size: 24px; /* Уменьшаем размер заголовка */
+            font-size: 24px; /* Уменьшаем размер заголовка на мобильных устройствах */
         }
+
         .feedback-create p {
-            font-size: 14px; /* Уменьшаем размер текста */
+            font-size: 14px; /* Уменьшаем размер текста на мобильных устройствах */
         }
     }
 </style>
@@ -62,7 +67,6 @@ $user = Yii::$app->user->identity;
 
 <div class="feedback-create">
    
-    
     <div class="user-info">
         <p>
             <strong>Имя:</strong> <?= Html::encode($user->full_name) ?><br>
@@ -82,4 +86,4 @@ $user = Yii::$app->user->identity;
         
         <?php ActiveForm::end(); ?>
     </div>
-</div>
+</div> 

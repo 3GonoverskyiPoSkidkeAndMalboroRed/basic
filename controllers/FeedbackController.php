@@ -42,12 +42,18 @@ class FeedbackController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             
-            if ($model->upload() && $model->save()) {
+            // Сначала загружаем файл, если он есть
+            $uploadSuccessful = !$model->imageFile || $model->upload();
+            
+            // Затем сохраняем модель
+            if ($uploadSuccessful && $model->save()) {
                 // Отправляем уведомление администратору
                 $model->sendNotification();
                 
                 Yii::$app->session->setFlash('success', 'Спасибо за ваше сообщение. Мы свяжемся с вами в ближайшее время.');
                 return $this->redirect(['/user/orders']);
+            } else {
+                Yii::$app->session->setFlash('error', 'Ошибка сохранения сообщения.');
             }
         }
 

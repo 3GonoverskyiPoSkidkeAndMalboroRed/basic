@@ -41,7 +41,7 @@ class Feedback extends ActiveRecord
             [['message'], 'string'],
             [['created_at'], 'safe'],
             [['image'], 'string', 'max' => 255],
-            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, gif'],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, gif', 'maxSize' => 1024 * 1024 * 5], // 5MB
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -77,16 +77,30 @@ class Feedback extends ActiveRecord
      */
     public function upload()
     {
-        if ($this->validate()) {
-            if ($this->imageFile) {
-                $fileName = 'feedback_' . time() . '.' . $this->imageFile->extension;
-                $this->imageFile->saveAs('uploads/' . $fileName);
-                $this->image = $fileName;
-            }
-            return true;
-        } else {
+        if (!$this->imageFile) {
+            return true; // Если файла нет, считаем что загрузка успешна
+        }
+        
+        // Проверяем наличие временного файла
+        if (!is_uploaded_file($this->imageFile->tempName) || !file_exists($this->imageFile->tempName)) {
             return false;
         }
+        
+        // Проверяем, существует ли директория загрузки
+        $uploadDir = Yii::getAlias('@webroot/uploads');
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+        
+        $fileName = 'feedback_' . time() . '.' . $this->imageFile->extension;
+        $filePath = $uploadDir . '/' . $fileName;
+        
+        if ($this->imageFile->saveAs($filePath)) {
+            $this->image = $fileName;
+            return true;
+        }
+        
+        return false;
     }
 
     /**
