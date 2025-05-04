@@ -8,7 +8,7 @@ use yii\grid\GridView;
 
 $this->title = 'Заказы';
 ?>
-<h1><?= Html::encode($this->title) ?></h1>
+<h1 style="margin-top: 20px;"><?= Html::encode($this->title) ?></h1>
 
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
@@ -21,6 +21,10 @@ $this->title = 'Заказы';
         ],
         [
             'attribute' => 'product.title',
+            'label' => 'Название товара',
+        ],
+        [
+            'attribute' => 'product.item_name',
             'label' => 'Название товара',
         ],
         [
