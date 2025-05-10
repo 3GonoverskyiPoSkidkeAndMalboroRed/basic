@@ -1,7 +1,7 @@
 /* Стили для каталога */
 .catalog-item {
     background-color: none;
-    border: 3px solid rgb(160, 2, 2);
+    /* border: 3px solid rgb(160, 2, 2); */
     padding: 15px;
     border-radius: 10px;
     transition: all 0.3s ease;
@@ -14,7 +14,7 @@
 .catalog-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgb(160, 2, 2);
-    border-color: rgb(160, 2, 2);
+    /* border-color: rgb(160, 2, 2); */
 }
 
 .catalog-link {
@@ -25,13 +25,13 @@
 .catalog-image-container {
     margin-bottom: 15px;
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: 0px;
 }
 
 .catalog-image {
     width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 0px;
     transition: transform 0.3s ease;
 }
 
