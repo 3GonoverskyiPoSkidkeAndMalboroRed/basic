@@ -34,17 +34,7 @@ use app\models\Product;
                     </span>
                 </div>
 
-                <div class="catalog-detail-row">
-                    <span class="catalog-size">
-                        <?= Html::encode(Product::$sizes[$model->size]) ?>
-                    </span>
-                </div>
 
-                <div class="catalog-detail-row">
-                    <span class="catalog-category">
-                        <?= Html::encode($model->category->title) ?>
-                    </span>
-                </div>
 
                 <div class="catalog-detail-row">
                     <span class="catalog-price">
