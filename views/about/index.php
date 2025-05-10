@@ -10,6 +10,13 @@ use yii\helpers\Html;
             <img src="<?= Yii::getAlias('@web/img/a-wild-and-beautiful-cool-horse-in-the-wilderness-7jpmupu98f3sapu3-7jpmupu98f3sapu3.jpg') ?>" alt="О нас" class="img-fluid" style="width: 100%; max-width: 800px;" />
         </div>
         <p>Мы гордимся тем, что работаем с лучшими партнерами и поставщиками.</p>
-        <p>Свяжитесь с нами, чтобы узнать больше о наших услугах и предложениях.</p>
+        <div class="contact-info">
+            <p><a href="http://basic/feedback/create" style="text-decoration: underline; color: inherit; transition: color 0.3s;">Свяжитесь с нами</a>, чтобы узнать больше о наших услугах и предложениях.</p>
+            <style>
+                .about-content a:hover {
+                    color: #007bff; /* Цвет при наведении */
+                }
+            </style>
+        </div>
     </div>
 </div>
