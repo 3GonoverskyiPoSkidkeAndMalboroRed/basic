@@ -8,6 +8,28 @@ use app\models\Product;
 
 $this->title = $model->title;
 ?>
+<style>
+.zoom {
+  transition: transform 0.3s; /* Animation */
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom) */
+  margin-top: 2rem;
+  margin-bottom: 7rem;
+}
+
+/* Отключаем эффект увеличения на мобильных устройствах */
+@media (max-width: 768px) {
+  .zoom:hover {
+    transform: none; /* Убираем увеличение */
+    margin-top: 0; /* Убираем отступы */
+    margin-bottom: 0; /* Убираем отступы */
+  }
+}
+</style>
+
 <div class="product-view">
     <div class="row">
         <div class="col-md-12">
@@ -16,7 +38,7 @@ $this->title = $model->title;
                     <?php foreach ($model->photos as $photo): ?>
                         <?= Html::img('@web/uploads/' . $photo->file_name, [
                             'alt' => $model->title,
-                            'class' => 'img-fluid',
+                            'class' => 'img-fluid zoom',
                         ]) ?>
                     <?php endforeach; ?>
                 <?php else: ?>
