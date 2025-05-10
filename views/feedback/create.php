@@ -77,7 +77,7 @@ $user = Yii::$app->user->identity;
 
         
         <div class="form-group">
-            <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Отправить', ['class' => 'btn btn-success', 'style' => 'font-family: Helvetica']) ?>
         </div>
         
         <?php ActiveForm::end(); ?>
