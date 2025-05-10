@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = 'Мои заказы';
 ?>
 <div style="background-color: black; padding: 20px;">
-    <h1 style="color: white; font-family: Impact; margin-bottom: 30px;"><?= Html::encode($this->title) ?></h1>
+    <h1 style="color: white; font-family: Impact; margin-bottom: 30px;"><?= Html::encode($this->title)?></h1>
 
     <div class="orders-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
         <?php foreach ($orders as $order): ?>
@@ -34,6 +34,12 @@ $this->title = 'Мои заказы';
                         <?= Html::encode($order->product->item_name) ?>
                     </p>
                     <div class="order-details" style="display: grid; gap: 5px;">
+                    <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #888; font-family: Impact;">Номер заказа:</span>
+                            <span style="color: white; font-family: Impact;">
+                                <?= Html::encode($order->id) ?>
+                            </span>
+                        </div>
                         <div style="display: flex; justify-content: space-between;">
                             <span style="color: #888; font-family: Impact;">Статус:</span>
                             <span style="color: white; font-family: Impact;">
@@ -42,16 +48,9 @@ $this->title = 'Мои заказы';
                         </div>
 
                         <div style="display: flex; justify-content: space-between;">
-                            <span style="color: #888; font-family: Impact;">Дата заказа:</span>
+                            <span style="color: #888; font-family: Impact;">Дата и время заказа:</span>
                             <span style="color: white; font-family: Impact;">
-                                <?= Html::encode(Yii::$app->formatter->asDate($order->created_at, 'php:d.m.Y')) ?>
-                            </span>
-                        </div>
-
-                        <div style="display: flex; justify-content: space-between;">
-                            <span style="color: #888; font-family: Impact;">Время заказа:</span>
-                            <span style="color: white; font-family: Impact;">
-                                <?= Html::encode(Yii::$app->formatter->asTime($order->created_at, 'php:H:i')) ?>
+                                <?= Html::encode(Yii::$app->formatter->asDate($order->created_at, 'php:d.m.Y H:i')) ?>
                             </span>
                         </div>
                     </div>
@@ -60,5 +59,6 @@ $this->title = 'Мои заказы';
         <?php endforeach; ?>
     </div>
 
-    
+    <!-- Добавляем ссылку на форму обратной связи -->
+
 </div>                                                                          
