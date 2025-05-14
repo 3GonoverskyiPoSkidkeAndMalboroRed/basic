@@ -130,7 +130,7 @@ class SiteController extends Controller
 
             if ($user = $model->userRegister()) {
                 Yii::$app->user->login($user);
-                return $this->redirect('/account');
+                return $this->redirect('/');
             }
             
         }
