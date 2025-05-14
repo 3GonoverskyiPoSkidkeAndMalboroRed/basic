@@ -38,6 +38,8 @@ class RegisterForm extends Model
             //+7(XXX)-XXX-XX-XX
             // +7\([\d]{3}\)-[\d]{3}-[\d]{2}-[\d]{2}
             //
+            ['password', 'match', 'pattern' => '/^[a-zA-Z0-9_]+$/', 'message' => 'Пароль может содержать только латинские буквы и символы.'],
+
             ['phone', 'match', 'pattern' => '/^\+7\([\d]{3}\)-[\d]{3}-[\d]{2}-[\d]{2}$/', 'message' => 'Телефон в формате +7(XXX)-XXX-XX-XX'],
             [['login'], 'unique', 'targetClass' => User::class],
 
