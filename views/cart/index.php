@@ -6,9 +6,10 @@ use yii\helpers\Html;
 /** @var array $cart */
 /** @var app\models\Product[] $products */
 
+ // Подключение нового CSS файла
 
 ?>
-<div class="cart-index" style="background-color: #000; color: #fff; padding: 20px;">
+<div class="cart-index">
     <h1><?= Html::encode($this->title) ?></h1>
     
     <?php if (empty($cart)): ?>
@@ -18,7 +19,7 @@ use yii\helpers\Html;
             <?php $subtotal = 0; ?>
             <?php foreach ($products as $product): ?>
                 <?php if (isset($cart[$product->id])): ?>
-                    <div class="cart-item" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                    <div class="cart-item">
                         <div style="display: flex; align-items: center;">
                             <?php if ($product->photos): ?>
                                 <?= Html::img('@web/uploads/' . $product->photos[0]->file_name, [
@@ -27,32 +28,29 @@ use yii\helpers\Html;
                                 ]) ?>
                             <?php endif; ?>
                             <div>
-                                <p style="margin: 0;">
+                                <p class="cart-item-name">
                                     <?= Html::encode($product->title) ?> - <?= Html::encode($product->item_name) ?>
                                 </p>
                                 <p>Цена: <?= Html::encode($product->cost) ?>$</p>
-                                <?= Html::a('Удалить', ['remove', 'id' => $product->id], ['class' => 'btn btn-danger']) ?>
+                                <?= Html::a('Удалить', ['remove', 'id' => $product->id], ['class' => 'btn btn-minimalist-сart-delete btn-lg']) ?>
                             </div>
                         </div>
-
-                           
-
                     </div>
                     <?php $subtotal += $product->cost * $cart[$product->id]; ?>
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
 
-        <div class="cart-summary" style="margin-top: 20px;">
+        <div class="cart-summary">
             <h3>К оплате - <?= $subtotal ?>$</h3>
         </div>
 
-        <div class="payment" style="margin-top: 20px;">
-            <h2 style="color: red;">
+        <div class="payment">
+            <h2>
                 <?php if (Yii::$app->user->isGuest): ?>
                     <span>Чтобы оформить заказ, вам нужно <a href="<?= \yii\helpers\Url::to(['site/login']) ?>">войти</a>.</span>
                 <?php else: ?>
-                    <?= Html::a('Оформить заказ', ['cart/checkout'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('Оформить заказ', ['cart/checkout'], ['class' => 'btn btn-minimalist-cart-checkout btn-lg']) ?>
                 <?php endif; ?>
             </h2>
         </div>

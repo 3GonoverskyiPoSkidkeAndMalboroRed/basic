@@ -9,23 +9,50 @@ use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
 $this->title = 'Вход';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+<style>
+body {
+    font-family: 'Helvetica', sans-serif; /* Устанавливаем шрифт Helvetica для всего тела страницы */
+}
+
+.site-login {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.site-login h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Impact', sans-serif; /* Устанавливаем шрифт Impact для заголовка */
+}
+
+.site-login .form-group {
+    margin-bottom: 15px;
+}
+
+.site-login .btn {
+    width: 100%;
+}
+</style>
+
 <div class="site-login">
     <h3><?= Html::encode($this->title) ?></h3>
 
-    <!-- <p>Please fill out the following fields to login:</p> -->
+    <p class="text-center">
+        <?= Html::a('Регистрация, если у вас нет аккаунта', ['/site/register'], ['class' => 'link-primary']) ?>
+    </p>
 
-    <div class="row">
-        <div class="col-lg-5">
-
+    <div class="row justify-content-center">
+        <div >
             <?php $form = ActiveForm::begin([
                 'id' => 'login-form',
                 'fieldConfig' => [
                     'template' => "{label}\n{input}\n{error}",
-                    'labelOptions' => ['class' => 'col-lg-1 col-form-label mr-lg-3'],
-                    'inputOptions' => ['class' => 'col-lg-3 form-control'],
-                    'errorOptions' => ['class' => 'col-lg-7 invalid-feedback'],
+                    'labelOptions' => ['class' => 'col-form-label'],
+                    'inputOptions' => ['class' => 'form-control'],
+                    'errorOptions' => ['class' => 'invalid-feedback'],
                 ],
             ]); ?>
 
@@ -33,13 +60,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'password')->passwordInput() ?>
 
-            <?= $form->field($model, 'rememberMe')->checkbox([
-                'template' => "<div class=\"custom-control custom-checkbox\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            ]) ?>
+
 
             <div class="form-group">
                 <div>
-                    <?= Html::submitButton(' Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
             </div>
 

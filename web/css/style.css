@@ -6,7 +6,7 @@
 }
 
 #main {
-    animation: main 1.5s ease 1;
+    animation: main 0.5s ease 1;
 }
 
 
@@ -64,6 +64,13 @@ table {
     25%, 75% {
         box-shadow: 0 0 7px rgb(0, 100, 0);
     }
+}
+
+@font-face {
+    font-family: 'Carabine';
+    src: url('web/font/Carabine-Medium.vfc.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 

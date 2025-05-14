@@ -7,9 +7,8 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Список товаров';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<h1><?= Html::encode($this->title) ?></h1>
+<h1 style="margin-top: 20px;"><?= Html::encode($this->title) ?></h1>
 
 <p>
     <?= Html::a('Добавить товар', ['create'], ['class' => 'btn btn-success']) ?>
@@ -21,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ['class' => 'yii\grid\SerialColumn'],
         'id',
         'title',
+        'item_name',
         'count',
         'cost',
         'category.title', // Предполагаем, что у вас есть связь с моделью Category
@@ -29,4 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'template' => '{update} {delete}',
         ],
     ],
-]); ?> 
+    
+]); 
+?> 

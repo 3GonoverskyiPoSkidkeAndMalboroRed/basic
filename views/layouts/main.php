@@ -43,18 +43,18 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav me-auto'],
         'items' => [  
-            ['label' => '<span style="font-family: Impact; font-size: 1.2em;">Каталог</span>', 'url' => ['/store/index'], 'encode' => false],
-            ['label' => '<span style="font-family: Impact; font-size: 1.2em;">Музыка</span>', 'url' => ['/music/index'], 'encode' => false],
-            
+            ['label' => '<span class="nav-link">Каталог</span>', 'url' => ['/store/index'], 'encode' => false],
+            ['label' => '<span class="nav-link">Музыка</span>', 'url' => ['/music/index'], 'encode' => false],
+            ['label' => '<span class="nav-link">О нас</span>', 'url' => ['/about/index'], 'encode' => false],   
             Yii::$app->user->isGuest
-                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Регистрация</span>', 'url' => ['/site/register'], 'encode' => false]
+                ? ['label' => '<span class="nav-link">Регистрация</span>', 'url' => ['/site/register'], 'encode' => false]
                 : '',
-
-
 
             !Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin
-                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Админка</span>', 'url' => ['/admin'], 'encode' => false]
+                ? ['label' => '<span class="nav-link">Админка</span>', 'url' => ['/admin'], 'encode' => false]
                 : '',
+
+                
         ]
     ]);
 
@@ -63,24 +63,27 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav ms-auto'],
         'items' => [
             !Yii::$app->user->isGuest
-                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Корзина</span>', 'url' => ['/cart/index'], 'encode' => false]
-                : ['label' => '<span style="font-family: Impact; font-size: 1.2em">Корзина</span>', 'url' => ['/cart/index'], 'encode' => false],
+                ? ['label' => '<span class="nav-link">Корзина</span>', 'url' => ['/cart/index'], 'encode' => false]
+                : ['label' => '<span class="nav-link">Корзина</span>', 'url' => ['/cart/index'], 'encode' => false],
 
-
-                !Yii::$app->user->isGuest && !Yii::$app->user->identity->isAdmin
-                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Мои заказы</span>', 'url' => ['/user/orders'], 'encode' => false]
+            !Yii::$app->user->isGuest && !Yii::$app->user->identity->isAdmin
+                ? ['label' => '<span class="nav-link">Мои заказы</span>', 'url' => ['/user/orders'], 'encode' => false]
                 : '',
-                
+            
             Yii::$app->user->isGuest
-                ? ['label' => '<span style="font-family: Impact; font-size: 1.2em">Вход</span>', 'url' => ['/site/login'], 'encode' => false]
+                ? ['label' => '<span class="nav-link">Вход</span>', 'url' => ['/site/login'], 'encode' => false]
                 : '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
-                        '<span style="font-family: Impact; font-size: 1.2em">Выход (' . Yii::$app->user->identity->login . ')</span>',
+                        '<span class="nav-link">Выход (' . Yii::$app->user->identity->login . ')</span>',
                         ['class' => 'nav-link btn btn-link logout', 'encode' => false]
                     )
                     . Html::endForm()
-                    . '</li>'
+                    . '</li>',
+
+            
+                
+                
         ]
     ]);
 
@@ -101,8 +104,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <footer id="footer" class="mt-auto py-3 bg-black border-top border-white ">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center  text-white">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center  text-white"><?= Yii::powered() ?></div>
+            <div class="col-md-12 text-center text-white" style="font-family: Impact;">
+                &copy; Неверов Павел <?= date('Y') ?><br>
+                Все права защищены<br>
+                <a href="<?= \yii\helpers\Url::to(['feedback/create']) ?>" class="text-white feedback-link text-decoration-none">Обратная связь</a>
+            </div>
         </div>
     </div>
 </footer>

@@ -1,0 +1,24 @@
+.about-page {
+    padding: 20px;
+    font-family: 'Impact', sans-serif; /* Установка шрифта Impact для всей страницы */
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto; /* Центрирование контента */
+    text-align: center; /* Центрирование текста */
+}
+
+.about-images {
+    display: flex;
+    justify-content: space-between; /* Распределение изображений */
+    margin: 20px 0; /* Отступы сверху и снизу */
+}
+
+.about-images img {
+    width: 100%; /* Установите ширину на 100% для адаптивности */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    max-width: 800px; /* Максимальная ширина изображения */
+    border: 2px solid #ccc; /* Добавление рамки */
+    border-radius: 5px; /* Закругление углов рамки */
+}

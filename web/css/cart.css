@@ -1,0 +1,68 @@
+.cart-index {
+    background-color: #000; /* Фоновый цвет */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Отступы */
+    font-family: Impact; /* Установка шрифта Impact */
+}
+
+.cart-item {
+    display: flex; /* Использует flexbox для выравнивания */
+    justify-content: space-between; /* Выравнивание по горизонтали */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+.order-image {
+    margin-bottom: 15px; /* Отступ снизу для изображения */
+}
+
+.order-card {
+    background-color: #111; /* Фоновый цвет карточки */
+    border: 1px solid #333; /* Цвет рамки */
+    padding: 15px; /* Отступы */
+    border-radius: 10px; /* Закругление углов */
+}
+
+.btn-minimalist-сart-delete {
+    font-family: inherit; /* Наследует шрифт */
+    font-size: 16px; /* Размер шрифта */
+    background: transparent; /* Прозрачный фон */
+    color: rgb(160, 2, 2); /* Цвет текста */
+    padding: 0.5em 1em; /* Отступы */
+    border: 2px solid rgb(160, 2, 2); /* Рамка */
+    border-radius: 8px; /* Закругление углов */
+    transition: all 0.3s ease; /* Плавный переход */
+    cursor: pointer; /* Указатель курсора */
+    text-decoration: none; /* Убирает подчеркивание */
+    display: inline-block; /* Для корректного отображения */
+    font-family: Impact;
+}
+
+.btn-minimalist-сart-delete:hover {
+    background: rgb(160, 2, 2); /* Фон при наведении */
+    color: white; /* Цвет текста при наведении */
+}
+
+
+.btn-minimalist-cart-checkout {
+    font-family: inherit; /* Наследует шрифт */
+    font-size: 16px; /* Размер шрифта */
+    background: transparent; /* Прозрачный фон */
+    color: rgb(160, 2, 2); /* Цвет текста */
+    padding: 0.5em 1em; /* Отступы */
+    border: 2px solid rgb(160, 2, 2); /* Рамка */
+    border-radius: 8px; /* Закругление углов */
+    transition: all 0.3s ease; /* Плавный переход */
+    cursor: pointer; /* Указатель курсора */
+    text-decoration: none; /* Убирает подчеркивание */
+    display: inline-block; /* Для корректного отображения */
+    font-family: Impact;
+}
+
+.btn-minimalist-cart-checkout:hover {
+    background: rgb(23, 134, 1); /* Фон при наведении */
+    color: white; /* Цвет текста при наведении */
+}
+
+.cart-item-name {
+    font-family: Impact; /* Установка шрифта Impact для названия товара */
+}

@@ -1,0 +1,21 @@
+/* Стили для блока новостей */
+.news-container {
+    color: white; /* Цвет заголовка */
+    font-family: Impact; /* Шрифт заголовка */
+    text-align: center; /* Выравнивание по центру */
+    margin-bottom: 10px; /
+}
+.news-title {
+    color: white; /* Цвет заголовка */
+    font-family: Impact; /* Шрифт заголовка */
+    text-align: center; /* Выравнивание по центру */
+    margin-bottom: 10px; /* Отступ снизу */
+    text-decoration: underline;
+
+}
+
+.news-content {
+    color: white; /* Цвет текста */
+    text-align: center; /* Выравнивание по центру */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}

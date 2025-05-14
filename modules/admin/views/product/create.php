@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Category;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 use app\models\Product;
@@ -23,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'item_name')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'count')->textInput() ?>
     <?= $form->field($model, 'cost')->textInput() ?>
-    <?= $form->field($model, 'category_id')->dropDownList($categories, ['prompt' => 'Выберите категорию']) ?>
+    <?= $form->field($model, 'category_id')->dropDownList(Category::getCategories(), ['prompt' => 'Выберите категорию']) ?>
     <?= $form->field($model, 'size')->dropDownList(Product::$sizes, ['prompt' => 'Выберите размер']) ?>
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'image[]')->fileInput(['multiple' => true]) ?>

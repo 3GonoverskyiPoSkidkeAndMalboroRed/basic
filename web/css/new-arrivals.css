@@ -1,0 +1,32 @@
+/* Стили для блока "Новые поступления" */
+.new-arrivals {
+    margin: 30px 0;
+    padding: 20px;
+  
+    border-radius: 10px;
+}
+
+.new-arrivals-title {
+    font-family: Impact; /* Шрифт заголовка */
+    font-size: 2em; /* Размер шрифта */
+    color: white; /* Цвет заголовка */
+    text-align: center; /* Выравнивание по центру */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+.new-arrival-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Плавный переход */
+    border: 2px solid transparent; /* Начальная рамка */
+}
+
+.new-arrival-item:hover {
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+    border: 2px solid rgb(160, 2, 2); /* Рамка при наведении */
+}
+
+.product-title, .product-item-name{
+    color: rgb(255, 255, 255); 
+    font-family: Impact;
+    
+}

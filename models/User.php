@@ -19,6 +19,7 @@ use yii\web\IdentityInterface;
  *
  * @property Application[] $applications
  * @property Role $role
+ * @property Feedback[] $feedbacks
  */
 class User extends ActiveRecord implements IdentityInterface 
 {
@@ -79,6 +80,16 @@ class User extends ActiveRecord implements IdentityInterface
     public function getRole()
     {
         return $this->hasOne(Role::class, ['id' => 'role_id']);
+    }
+
+    /**
+     * Gets query for [[Feedbacks]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFeedbacks()
+    {
+        return $this->hasMany(Feedback::class, ['user_id' => 'id']);
     }
 
     public static function findByUsername(string $login): null|object

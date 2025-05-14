@@ -1,6 +1,6 @@
 /* Стили для страницы Музыка */
 .music-index {
-    background-color: #000;
+    /* background-color: #000; */
     color: #fff;
     padding: 20px;
 }
@@ -44,6 +44,15 @@
 .youtube-thumbnail {
     margin-bottom: 15px;
     position: relative;
+    /* background-color: rgba(34, 34, 34, 0.8); */
+    border-radius: 10px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.youtube-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .youtube-thumbnail img {
@@ -121,4 +130,13 @@
     color: white;
     font-family: Impact;
     margin-bottom: 30px;
+}
+
+.card a {
+    color: white;
+    text-decoration: none;
+}
+
+.card a:hover {
+    text-decoration: none;
 } 
