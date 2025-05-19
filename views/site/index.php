@@ -6,8 +6,8 @@ use yii\helpers\Html;
 use app\models\Product;
 use app\models\News;
 
-// Получаем товары из базы данных
-$newProducts = Product::find()->with('photos')->limit(3)->all(); // Получаем только 3 товара с фотографиями
+// Получаем последние 3 товара из базы данных, сортируя по id
+$newProducts = Product::find()->with('photos')->orderBy(['id' => SORT_DESC])->limit(3)->all(); // Получаем только 3 последних товара с фотографиями
 
 ?>
 
