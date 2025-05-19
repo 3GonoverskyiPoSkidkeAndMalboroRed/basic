@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 ?>
 <div class="about-page">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -11,7 +12,7 @@ use yii\helpers\Html;
         </div>
         <p>Мы гордимся тем, что работаем с лучшими партнерами и поставщиками.</p>
         <div class="contact-info">
-            <p><a href="http://basic/feedback/create" style="text-decoration: underline; color: inherit; transition: color 0.3s;">Свяжитесь с нами</a>, чтобы узнать больше о наших услугах и предложениях.</p>
+            <p><a href="<?= Url::to(['feedback/create']) ?>" style="text-decoration: underline; color: inherit; transition: color 0.3s;">Свяжитесь с нами</a>, чтобы узнать больше о наших услугах и предложениях.</p>
             <style>
                 .about-content a:hover {
                     color: #007bff; /* Цвет при наведении */
