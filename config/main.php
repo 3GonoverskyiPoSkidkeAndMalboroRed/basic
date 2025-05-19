@@ -10,7 +10,6 @@ use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
 
-
 AppAsset::register($this);
 
 $this->registerCsrfMetaTags();
@@ -18,14 +17,13 @@ $this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
 $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
+$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
 
 // Open Graph мета-теги
 $this->registerMetaTag(['property' => 'og:title', 'content' => 'ВКР Неверова Павла']);
 $this->registerMetaTag(['property' => 'og:description', 'content' => 'Веб-приложения для  работы с клиентами интернет  магазина   коллекционной одежды']);
 $this->registerMetaTag(['property' => 'og:image', 'content' => 'https://neverovp11isp222.h1n.ru/img/a-wild-and-beautiful-cool-horse-in-the-wilderness-7jpmupu98f3sapu3-7jpmupu98f3sapu3.jpg']);
-$this->registerMetaTag(['property' => 'og:url', 'content' => 'https://neverovp11isp222.h1n.ru']);
-
-$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
+$this->registerMetaTag(['property' => 'og:url', 'content' => 'https://neverovp11isp222.h1n.ru/']);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -35,7 +33,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <link href="/css/site.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <?php $this->head() ?>
-    
 </head>
 <body class="d-flex flex-column h-100 ">
 <?php $this->beginBody() ?>
