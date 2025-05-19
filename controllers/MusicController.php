@@ -51,8 +51,26 @@ class MusicController extends Controller
 
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        
+        // Устанавливаем OpenGraph мета-теги для музыки
+        $this->view->title = $model->title;
+        
+        // OpenGraph мета-теги
+        $this->view->registerMetaTag(['property' => 'og:title', 'content' => $model->title]);
+        $this->view->registerMetaTag(['property' => 'og:description', 'content' => 'Музыка: ' . $model->title]);
+        
+        // Получаем thumbnail для YouTube видео
+        $thumbnailUrl = $model->getYoutubeThumbnail();
+        if ($thumbnailUrl) {
+            $this->view->registerMetaTag(['property' => 'og:image', 'content' => $thumbnailUrl]);
+        }
+        
+        $this->view->registerMetaTag(['property' => 'og:url', 'content' => Yii::$app->request->absoluteUrl]);
+        $this->view->registerMetaTag(['property' => 'og:type', 'content' => 'music.song']);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
