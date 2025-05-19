@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d45b671d7961e576ec69602e8226d6d",
+    "content-hash": "2441acff15023b68e1a5ba8f02d5356d",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -159,6 +159,54 @@
                 "source": "https://github.com/cebe/markdown"
             },
             "time": "2018-03-26T11:24:36+00:00"
+        },
+        {
+            "name": "daxslab/yii2-taggedview",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/daxslab/yii2-taggedview.git",
+                "reference": "06c509ccadcfd20c625bdd4603d35e23b1736730"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/daxslab/yii2-taggedview/zipball/06c509ccadcfd20c625bdd4603d35e23b1736730",
+                "reference": "06c509ccadcfd20c625bdd4603d35e23b1736730",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "daxslab\\taggedview\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gabriel A. López López",
+                    "email": "glpz@daxslab.com"
+                }
+            ],
+            "description": "Extension to help setup the standard HTML meta tags besides the ones defined by Opengraph and Twitter to contribute to website SEO",
+            "keywords": [
+                "facebook",
+                "html",
+                "metatags",
+                "seo",
+                "twitter",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/daxslab/yii2-taggedview/issues",
+                "source": "https://github.com/daxslab/yii2-taggedview/tree/1.0.3"
+            },
+            "time": "2021-08-25T13:47:39+00:00"
         },
         {
             "name": "doctrine/lexer",
