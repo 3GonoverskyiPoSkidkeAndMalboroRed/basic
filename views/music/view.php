@@ -5,8 +5,7 @@ use yii\helpers\Html;
 /* @var $music app\models\Music */
 
 $this->title = $music->title;
-$this->params['breadcrumbs'][] = ['label' => 'Music', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="music-view">
     <h1><?= Html::encode($this->title) ?></h1>

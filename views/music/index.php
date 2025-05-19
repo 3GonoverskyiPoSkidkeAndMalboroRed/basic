@@ -5,7 +5,7 @@ use yii\widgets\ListView;
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Музыка';
+$this->title = 'Контент';
 ?>
 
 <div class="music-index">
@@ -13,7 +13,7 @@ $this->title = 'Музыка';
 
     <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin): ?>
         <div class="mb-3">
-            <?= Html::a('Добавить музыку', ['create'], [
+            <?= Html::a('Добавить контент', ['create'], [
                 'class' => 'btn btn-success',
                 'style' => 'font-family: Impact;'
             ]) ?>

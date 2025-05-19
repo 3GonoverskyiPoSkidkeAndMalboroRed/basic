@@ -8,11 +8,10 @@ use yii\helpers\Url;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Сообщения обратной связи';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="feedback-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 style="margin-top: 20px;"><?= Html::encode($this->title) ?></h1>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

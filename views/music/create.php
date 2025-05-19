@@ -6,7 +6,7 @@ use yii\bootstrap5\ActiveForm;
 /** @var yii\web\View $this */
 /** @var app\models\Music $model */
 
-$this->title = 'Добавить музыку';
+$this->title = 'Добавить контент';
 ?>
 
 <div class="music-create">

@@ -5,7 +5,7 @@ use yii\bootstrap5\ActiveForm;
 /** @var yii\web\View $this */
 /** @var app\models\Music $model */
 
-$this->title = 'Обновить музыку: ' . $model->title;
+$this->title = 'Обновить контент: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Music', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -31,7 +31,7 @@ use yii\helpers\Html;
                                 <p class="cart-item-name">
                                     <?= Html::encode($product->title) ?> - <?= Html::encode($product->item_name) ?>
                                 </p>
-                                <p>Цена: <?= Html::encode($product->cost) ?>$</p>
+                                <p>Цена: <?= Html::encode($product->cost) ?>₽</p>
                                 <?= Html::a('Удалить', ['remove', 'id' => $product->id], ['class' => 'btn btn-minimalist-сart-delete btn-lg']) ?>
                             </div>
                         </div>

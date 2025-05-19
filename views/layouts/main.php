@@ -44,7 +44,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav me-auto'],
         'items' => [  
             ['label' => '<span class="nav-link">Каталог</span>', 'url' => ['/store/index'], 'encode' => false],
-            ['label' => '<span class="nav-link">Музыка</span>', 'url' => ['/music/index'], 'encode' => false],
+            ['label' => '<span class="nav-link">Контент</span>', 'url' => ['/music/index'], 'encode' => false],
             ['label' => '<span class="nav-link">О нас</span>', 'url' => ['/about/index'], 'encode' => false],   
             Yii::$app->user->isGuest
                 ? ['label' => '<span class="nav-link">Регистрация</span>', 'url' => ['/site/register'], 'encode' => false]

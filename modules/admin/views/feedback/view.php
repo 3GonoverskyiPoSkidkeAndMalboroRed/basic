@@ -7,8 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Feedback */
 
 $this->title = 'Сообщение #' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Сообщения обратной связи', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="feedback-view">
 
