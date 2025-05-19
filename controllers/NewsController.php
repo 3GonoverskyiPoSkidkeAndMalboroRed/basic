@@ -53,25 +53,6 @@ class NewsController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionView($id)
-    {
-        $model = $this->findModel($id);
-        
-        // Устанавливаем OpenGraph мета-теги для новости
-        $this->view->title = $model->title;
-        $this->view->params['meta_description'] = mb_substr(strip_tags($model->content), 0, 160);
-        
-        // OpenGraph мета-теги
-        $this->view->registerMetaTag(['property' => 'og:title', 'content' => $model->title]);
-        $this->view->registerMetaTag(['property' => 'og:description', 'content' => mb_substr(strip_tags($model->content), 0, 160)]);
-        $this->view->registerMetaTag(['property' => 'og:url', 'content' => Yii::$app->request->absoluteUrl]);
-        $this->view->registerMetaTag(['property' => 'og:type', 'content' => 'article']);
-
-        return $this->render('view', [
-            'model' => $model,
-        ]);
-    }
-
     protected function findModel($id)
     {
         if (($model = News::findOne($id)) !== null) {
