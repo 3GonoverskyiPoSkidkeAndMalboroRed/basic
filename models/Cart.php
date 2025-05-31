@@ -9,9 +9,7 @@ class Cart
     public static function addToCart($productId)
     {
         $cart = Yii::$app->session->get('cart', []);
-        if (isset($cart[$productId])) {
-            $cart[$productId]++;
-        } else {
+        if (!isset($cart[$productId])) {
             $cart[$productId] = 1;
         }
         Yii::$app->session->set('cart', $cart);
