@@ -4,11 +4,29 @@ namespace app\controllers;
 
 use Yii;
 use app\models\News;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 class NewsController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->isAdmin;
+                        }
+                    ],
+                ],
+            ],
+        ];
+    }
     public function actionIndex()
     {
         $newsItems = News::find()->all(); // Получаем все новости
