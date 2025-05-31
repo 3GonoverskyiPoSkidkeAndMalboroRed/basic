@@ -34,6 +34,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <title><?= Html::encode($this->title) ?></title>
     <link href="/css/site.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<?php echo Yii::$app->request->baseUrl; ?>/web/favicon.ico" type="image/x-icon" /> 
+
     <?php $this->head() ?>
     
 </head>
